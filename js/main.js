@@ -13,38 +13,13 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 /* ── 1. HERO ENTRANCE (fires on page load) ───────────────── */
 function animateHeroEntrance() {
   if (prefersReducedMotion) return;
-
+  // Pure movement only — no opacity hiding so content is always visible
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-  tl.fromTo('.hero-overline',
-    { opacity: 0, y: 20 },
-    { opacity: 1, y: 0, duration: 0.8 }
-  )
-  .fromTo('.reveal-word',
-    { clipPath: 'inset(0 0 100% 0)', y: 30 },
-    { clipPath: 'inset(0 0 0% 0)', y: 0, duration: 1, stagger: 0.18 },
-    '-=0.4'
-  )
-  .fromTo('.hero-body',
-    { opacity: 0, y: 24 },
-    { opacity: 1, y: 0, duration: 0.9 },
-    '-=0.5'
-  )
-  .fromTo('.hero-cta',
-    { opacity: 0, y: 16 },
-    { opacity: 1, y: 0, duration: 0.8 },
-    '-=0.5'
-  )
-  .fromTo('.hero-photo',
-    { opacity: 0, x: 40, clipPath: 'inset(0 100% 0 0)' },
-    { opacity: 1, x: 0, clipPath: 'inset(0 0% 0 0)', duration: 1.1 },
-    '-=1.0'
-  )
-  .fromTo('.hero-scroll-indicator',
-    { opacity: 0 },
-    { opacity: 1, duration: 0.6 },
-    '-=0.2'
-  );
+  tl.from('.hero-overline',   { y: 20, duration: 0.8 }, 0)
+    .from('.hero-headline',   { y: 30, duration: 1.0 }, 0.1)
+    .from('.hero-body',       { y: 20, duration: 0.9 }, 0.25)
+    .from('.hero-cta',        { y: 16, duration: 0.8 }, 0.35)
+    .from('.hero-photo',      { x: 30, duration: 1.1 }, 0.1);
 }
 
 /* ── 3. LENIS SMOOTH SCROLL ──────────────────────────────── */
@@ -91,39 +66,34 @@ function initScrollAnimations() {
 
   const defaults = { ease: 'power3.out', duration: 0.9 };
 
-  // Pre-set initial states so CSS doesn't need opacity:0
-  gsap.set('.section-overline.reveal-line', { opacity: 0, x: -20 });
-  gsap.set('.section-heading.reveal-heading', { opacity: 0, y: 50 });
-  gsap.set('.reveal-block', { opacity: 0, y: 30 });
-  gsap.set('.reveal-card', { opacity: 0, y: 48, scale: 0.96 });
-  gsap.set('.work-item', { opacity: 0, clipPath: 'inset(0 0 100% 0)' });
+  // Pure movement only — no opacity or visibility manipulation
+  // Content is always visible; animations just add polish
 
-  // Section overlines
+  // Section overlines — slide in from left
   $$('.section-overline.reveal-line').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, x: 0, ...defaults,
+    gsap.from(el, {
+      x: -24, ...defaults,
       scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
     });
   });
 
-  // Section headings
+  // Section headings — slide up
   $$('.section-heading.reveal-heading').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, y: 0,
-      duration: 1.1, ease: 'power3.out',
+    gsap.from(el, {
+      y: 40, duration: 1.0, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
     });
   });
 
-  // Reveal blocks
+  // Reveal blocks — slide up
   $$('.reveal-block').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, y: 0, ...defaults,
+    gsap.from(el, {
+      y: 28, ...defaults,
       scrollTrigger: { trigger: el, start: 'top 87%', toggleActions: 'play none none none' }
     });
   });
 
-  // Cards — staggered by parent group
+  // Cards — staggered slide up
   const cardGroups = {};
   $$('.reveal-card').forEach(card => {
     const key = card.parentElement;
@@ -132,9 +102,9 @@ function initScrollAnimations() {
   });
 
   Object.values(cardGroups).forEach(cards => {
-    gsap.to(cards, {
-      opacity: 1, y: 0, scale: 1,
-      duration: 0.9, ease: 'power3.out', stagger: 0.12,
+    gsap.from(cards, {
+      y: 40, scale: 0.97,
+      duration: 0.9, ease: 'power3.out', stagger: 0.1,
       scrollTrigger: { trigger: cards[0], start: 'top 85%', toggleActions: 'play none none none' }
     });
   });
@@ -147,16 +117,6 @@ function initScrollAnimations() {
       scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5 }
     });
   }
-
-  // Work grid clip-path wipe
-  $$('.work-item').forEach((item, i) => {
-    gsap.to(item, {
-      clipPath: 'inset(0 0 0% 0)', opacity: 1,
-      duration: 0.85, ease: 'power3.out',
-      delay: (i % 3) * 0.07,
-      scrollTrigger: { trigger: item, start: 'top 90%', toggleActions: 'play none none none' }
-    });
-  });
 }
 
 /* ── 5. NAVIGATION ───────────────────────────────────────── */
