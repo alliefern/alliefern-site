@@ -520,11 +520,12 @@ body.cursor-hover .cursor-ring {
 .work-item .photo-placeholder { transition: transform 0.5s var(--ease-smooth); }
 
 /* ── Reveal Animation Classes ────────────────────────────── */
+/* opacity starts at 1 — GSAP overrides to 0 before animating.
+   This ensures content is always visible if JS/GSAP fails. */
 .reveal-line,
 .reveal-heading,
 .reveal-block,
 .reveal-card {
-  opacity: 0;
   will-change: transform, opacity;
 }
 

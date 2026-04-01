@@ -89,94 +89,73 @@ function initLenis() {
 function initScrollAnimations() {
   if (prefersReducedMotion || typeof ScrollTrigger === 'undefined') return;
 
-  gsap.registerPlugin(ScrollTrigger);
-
   const defaults = { ease: 'power3.out', duration: 0.9 };
 
-  // Section overlines — draw line + slide text
+  // Pre-set initial states so CSS doesn't need opacity:0
+  gsap.set('.section-overline.reveal-line', { opacity: 0, x: -20 });
+  gsap.set('.section-heading.reveal-heading', { opacity: 0, y: 50 });
+  gsap.set('.reveal-block', { opacity: 0, y: 30 });
+  gsap.set('.reveal-card', { opacity: 0, y: 48, scale: 0.96 });
+  gsap.set('.work-item', { opacity: 0, clipPath: 'inset(0 0 100% 0)' });
+
+  // Section overlines
   $$('.section-overline.reveal-line').forEach(el => {
-    gsap.fromTo(el,
-      { opacity: 0, x: -20 },
-      {
-        opacity: 1, x: 0, ...defaults,
-        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
-      }
-    );
+    gsap.to(el, {
+      opacity: 1, x: 0, ...defaults,
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+    });
   });
 
-  // Section headings — clip reveal from bottom
+  // Section headings
   $$('.section-heading.reveal-heading').forEach(el => {
-    gsap.fromTo(el,
-      { opacity: 0, y: 50, clipPath: 'inset(0 0 100% 0)' },
-      {
-        opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)',
-        duration: 1.1, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
-      }
-    );
+    gsap.to(el, {
+      opacity: 1, y: 0,
+      duration: 1.1, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    });
   });
 
-  // Generic reveal blocks
+  // Reveal blocks
   $$('.reveal-block').forEach(el => {
-    gsap.fromTo(el,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1, y: 0, ...defaults,
-        scrollTrigger: { trigger: el, start: 'top 87%', toggleActions: 'play none none none' }
-      }
-    );
+    gsap.to(el, {
+      opacity: 1, y: 0, ...defaults,
+      scrollTrigger: { trigger: el, start: 'top 87%', toggleActions: 'play none none none' }
+    });
   });
 
-  // Cards — staggered
+  // Cards — staggered by parent group
   const cardGroups = {};
   $$('.reveal-card').forEach(card => {
-    const parent = card.parentElement;
-    if (!cardGroups[parent]) cardGroups[parent] = [];
-    cardGroups[parent].push(card);
+    const key = card.parentElement;
+    if (!cardGroups[key]) cardGroups[key] = [];
+    cardGroups[key].push(card);
   });
 
   Object.values(cardGroups).forEach(cards => {
-    gsap.fromTo(cards,
-      { opacity: 0, y: 48, scale: 0.96 },
-      {
-        opacity: 1, y: 0, scale: 1,
-        duration: 0.9, ease: 'power3.out',
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: cards[0],
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        }
-      }
-    );
+    gsap.to(cards, {
+      opacity: 1, y: 0, scale: 1,
+      duration: 0.9, ease: 'power3.out', stagger: 0.12,
+      scrollTrigger: { trigger: cards[0], start: 'top 85%', toggleActions: 'play none none none' }
+    });
   });
 
   // Hero photo parallax
   const heroPhoto = $('.hero-photo');
   if (heroPhoto) {
     gsap.to(heroPhoto, {
-      y: -60,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.5
-      }
+      y: -60, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5 }
     });
   }
 
-  // Work grid clip-path wipe — per item
+  // Work grid clip-path wipe
   $$('.work-item').forEach((item, i) => {
-    gsap.fromTo(item,
-      { clipPath: 'inset(0 0 100% 0)', opacity: 0 },
-      {
-        clipPath: 'inset(0 0 0% 0)', opacity: 1,
-        duration: 0.85, ease: 'power3.out',
-        delay: (i % 3) * 0.07,
-        scrollTrigger: { trigger: item, start: 'top 90%', toggleActions: 'play none none none' }
-      }
-    );
+    gsap.to(item, {
+      clipPath: 'inset(0 0 0% 0)', opacity: 1,
+      duration: 0.85, ease: 'power3.out',
+      delay: (i % 3) * 0.07,
+      scrollTrigger: { trigger: item, start: 'top 90%', toggleActions: 'play none none none' }
+    });
   });
 }
 
