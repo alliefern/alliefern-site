@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allie Fern — Design & Strategy for High-Ticket Women</title>
+  <meta name="description" content="Design & Strategy for High-Ticket Women Ready to Bridge the Gap From $20k+ Months into $50k and Beyond. Revenue-focused branding that actually converts." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Allie Fern — Design & Strategy for High-Ticket Women" />
+  <meta property="og:description" content="I help high-ticket women build brands that close. Design, strategy, and implementation that moves the needle." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alliefern.com" />
+  <meta property="og:image" content="https://alliefern.com/assets/og-image.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- GSAP + Lenis loaded at end of body, no defer -->
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Allie Fern",
+    "description": "Design & Strategy for High-Ticket Women",
+    "url": "https://alliefern.com",
+    "serviceType": ["Brand Design", "Strategy", "Website Makeover", "Podcast Branding"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Page Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-logo">
+      <span class="loader-name">ALLIE FERN</span>
+      <span class="loader-sub">DESIGN &amp; STRATEGY</span>
+    </div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo" aria-label="Allie Fern Home">
+      <span class="nav-logo-name">ALLIE FERN</span>
+      <span class="nav-logo-sub">DESIGN &amp; STRATEGY</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#work" class="nav-link">Work</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="nav-cta btn-primary">Apply Now</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+    <ul>
+      <li><a href="#services" class="mobile-link">Services</a></li>
+      <li><a href="#work" class="mobile-link">Work</a></li>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary mobile-cta">Apply Now</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
+
+    <div class="hero-inner">
+      <p class="hero-overline reveal-line">
+        ALLIE FERN &mdash; Design &amp; Strategy for High-Ticket Women Ready to Bridge the Gap From $20k+ Months into $50k and Beyond
+      </p>
+
+      <h1 class="hero-headline">
+        <span class="reveal-word">Your brand is</span>
+        <span class="reveal-word hero-accent">making you hella money.</span>
+      </h1>
+
+      <div class="hero-body reveal-block">
+        <p>But you know deep down that it could be making <em>wayyyy</em> more. And currently, you sit at the intersection of knowing that, and not really knowing HOW to implement changes that will shore up that gap.</p>
+        <p>When we work together, I help build a bridge over that gap with visuals, strategy, and implementation so you can start making the kind of <strong>fuck-you money</strong> you have always known you're capable of.</p>
+      </div>
+
+      <div class="hero-cta reveal-block">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">
+          Literally sign me up right tf now &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Photo Placeholder -->
+    <div class="hero-photo reveal-block" aria-label="Hero photo placeholder">
+      <div class="photo-placeholder photo-placeholder--tall">
+        <span>[ Add luxury photo of Allie ]</span>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <span class="scroll-line"></span>
+      <span class="scroll-label">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ===================== MARQUEE ===================== -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Design that converts</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Strategy that scales</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Brands that close</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Design that converts</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Strategy that scales</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Brands that close</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Design that converts</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Strategy that scales</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Brands that close</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Design that converts</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Strategy that scales</span>
+      <span class="marquee-dot">&middot;</span>
+      <span>Brands that close</span>
+      <span class="marquee-dot">&middot;</span>
+    </div>
+  </div>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section class="services" id="services">
+    <div class="services-intro container">
+      <p class="section-overline reveal-line">WHAT WE DO</p>
+      <h2 class="section-heading reveal-heading">
+        What I do isn&rsquo;t &ldquo;graphic design&rdquo;.<br />
+        It&rsquo;s <em>REVENUE INCREASE.</em>
+      </h2>
+      <p class="section-sub reveal-block">Every asset I build, every brand decision I make, every layout I touch&hellip; it&rsquo;s all in service of one thing: making your business more money than it was making before I showed up.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-ghost btn-magnetic reveal-block">Get a taste of working together &rarr;</a>
+    </div>
+
+    <div class="services-grid container">
+
+      <div class="service-card reveal-card">
+        <div class="service-card-inner">
+          <div class="service-tag">01</div>
+          <h3 class="service-name">Iconic Woman</h3>
+          <div class="service-price">$7,000</div>
+          <p class="service-desc">A longterm private design and strategy partnership for the woman whose business has outgrown her brand. I embed into your world, work alongside you weekly, and build everything that impacts how you sell&hellip; brand, assets, backend, creative direction. All of it.</p>
+          <p class="service-note">One spot available to start in April 2026.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">Apply Now &rarr;</a>
+        </div>
+        <div class="service-card-accent"></div>
+      </div>
+
+      <div class="service-card reveal-card">
+        <div class="service-card-inner">
+          <div class="service-tag">02</div>
+          <h3 class="service-name">Website Makeover</h3>
+          <div class="service-price">$3,000</div>
+          <p class="service-desc">Your website isn&rsquo;t broken. It&rsquo;s just not converting. I take what you have and rebuild it into a luxury-level, high-converting asset that actually closes. Squarespace, Kajabi, GHL&hellip; whatever you&rsquo;re on, I&rsquo;ll make it work harder.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">Apply Now &rarr;</a>
+        </div>
+        <div class="service-card-accent"></div>
+      </div>
+
+      <div class="service-card reveal-card">
+        <div class="service-card-inner">
+          <div class="service-tag">03</div>
+          <h3 class="service-name">Podcast Makeover</h3>
+          <div class="service-price">$1,500</div>
+          <p class="service-desc">Your podcast is a sales tool that isn&rsquo;t dressed like one yet. I take your existing presence and turn it into a brand-aligned asset that builds authority and converts listeners into clients.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">Apply Now &rarr;</a>
+        </div>
+        <div class="service-card-accent"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <p class="section-overline reveal-line">WHAT THEY&rsquo;RE SAYING</p>
+      <h2 class="section-heading reveal-heading">Don&rsquo;t take my word for it.</h2>
+      <div class="senja-wrapper reveal-block">
+        <script src="https://widget.senja.io/widget/84bfc37e-9c2c-4a51-b90a-b4b629de8a9f/platform.js" type="text/javascript" async></script>
+        <div class="senja-embed" data-id="84bfc37e-9c2c-4a51-b90a-b4b629de8a9f" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WORK ===================== -->
+  <section class="work" id="work">
+    <div class="work-intro container">
+      <p class="section-overline reveal-line">RECENT WORK</p>
+      <h2 class="section-heading reveal-heading">The proof is in the portfolio.</h2>
+      <p class="section-sub reveal-block">I partner with women who are done letting their brand lag behind their vision. These are some recent collaborations.</p>
+    </div>
+
+    <div class="work-grid container">
+      <!-- Row 1: wide + tall -->
+      <div class="work-item work-item--wide reveal-card">
+        <div class="photo-placeholder">
+          <div class="work-hover-overlay"><span>VIEW PROJECT</span></div>
+          <span class="placeholder-label">[ Add Portfolio Image ]</span>
+        </div>
+      </div>
+      <div class="work-item work-item--tall reveal-card">
+        <div class="photo-placeholder">
+          <div class="work-hover-overlay"><span>VIEW PROJECT</span></div>
+          <span class="placeholder-label">[ Add Portfolio Image ]</span>
+        </div>
+      </div>
+      <!-- Row 2: three equal -->
+      <div class="work-item reveal-card">
+        <div class="photo-placeholder">
+          <div class="work-hover-overlay"><span>VIEW PROJECT</span></div>
+          <span class="placeholder-label">[ Add Portfolio Image ]</span>
+        </div>
+      </div>
+      <div class="work-item reveal-card">
+        <div class="photo-placeholder">
+          <div class="work-hover-overlay"><span>VIEW PROJECT</span></div>
+          <span class="placeholder-label">[ Add Portfolio Image ]</span>
+        </div>
+      </div>
+      <div class="work-item reveal-card">
+        <div class="photo-placeholder">
+          <div class="work-hover-overlay"><span>VIEW PROJECT</span></div>
+          <span class="placeholder-label">[ Add Portfolio Image ]</span>
+        </div>
+      </div>
+      <!-- Row 3: tall + wide -->
+      <div class="work-item work-item--tall reveal-card">
+        <div class="photo-placeholder">
+          <div class="work-hover-overlay"><span>VIEW PROJECT</span></div>
+          <span class="placeholder-label">[ Add Portfolio Image ]</span>
+        </div>
+      </div>
+      <div class="work-item work-item--wide reveal-card">
+        <div class="photo-placeholder">
+          <div class="work-hover-overlay"><span>VIEW PROJECT</span></div>
+          <span class="placeholder-label">[ Add Portfolio Image ]</span>
+        </div>
+      </div>
+      <!-- Row 4: two equal -->
+      <div class="work-item reveal-card">
+        <div class="photo-placeholder">
+          <div class="work-hover-overlay"><span>VIEW PROJECT</span></div>
+          <span class="placeholder-label">[ Add Portfolio Image ]</span>
+        </div>
+      </div>
+      <div class="work-item reveal-card">
+        <div class="photo-placeholder">
+          <div class="work-hover-overlay"><span>VIEW PROJECT</span></div>
+          <span class="placeholder-label">[ Add Portfolio Image ]</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-cta container reveal-block">
+      <a href="#" class="btn-ghost btn-magnetic">View more work &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about" id="about">
+    <div class="about-inner container">
+
+      <div class="about-photo reveal-card">
+        <div class="photo-placeholder photo-placeholder--portrait" aria-label="Photo of Allie Fern">
+          <span>[ Add luxury photo of Allie ]</span>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <p class="section-overline reveal-line">ABOUT ALLIE</p>
+        <h2 class="section-heading reveal-heading">
+          I&rsquo;m not here to make things look nice.<br />
+          <em>I&rsquo;m here to make things work.</em>
+        </h2>
+        <div class="about-body reveal-block">
+          <p>I&rsquo;ve been in design long enough to know that a pretty brand that doesn&rsquo;t convert isn&rsquo;t a brand. It&rsquo;s just decoration at that point.</p>
+          <p>I work with women who are already excellent&hellip; coaches, service providers, high-ticket sellers&hellip; who need a designer who can move at their speed, hold their vision, and build something that does the heavy lifting for them.</p>
+          <p>Think of me as your second brain. The person you drop a Tuesday morning voice note to with a half-formed idea and trust to turn it into something that sells. I bring the design, the strategy, the structure, and the eye&hellip; so you can stay in your genius and let the brand do its job.</p>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic reveal-block">I wanna hire you right tf now! &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== EMAIL CTA ===================== -->
+  <section class="email-cta" id="contact">
+    <div class="email-cta-inner container">
+      <p class="section-overline reveal-line" style="color: var(--cream-light); opacity: 0.6;">JOIN THE LIST</p>
+      <h2 class="section-heading reveal-heading">The best brands aren&rsquo;t built by accident.</h2>
+      <p class="section-sub reveal-block">Join the list for design and strategy insights that actually move the needle, straight to your inbox.</p>
+
+      <form class="email-form reveal-block" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <p class="hidden-field" aria-hidden="true"><input name="bot-field" /></p>
+        <div class="email-form-fields">
+          <input type="text" name="first-name" placeholder="First name" required autocomplete="given-name" />
+          <input type="email" name="email" placeholder="Email address" required autocomplete="email" />
+          <button type="submit" class="btn-cream btn-magnetic">I&rsquo;m In &rarr;</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-inner container">
+      <div class="footer-brand">
+        <span class="footer-logo-name">ALLIE FERN</span>
+        <span class="footer-logo-sub">Design &amp; Strategy for High-Ticket Women</span>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#hero">Home</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram" class="social-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="social-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="8" y1="11" x2="8" y2="17"/><line x1="8" y1="7" x2="8" y2="8"/><path d="M12 17v-6M12 11c0-2 4-2 4 0v6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>&copy; 2026 Allie Fern. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll (updated package name) -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
