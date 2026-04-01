@@ -73,33 +73,17 @@ ul { list-style: none; }
   padding-inline: clamp(1.25rem, 5vw, 4rem);
 }
 
-/* ── Loader ─────────────────────────────────────────────── */
-@keyframes loaderExit {
-  0%, 75%  { opacity: 1; visibility: visible; }
-  100%     { opacity: 0; visibility: hidden; }
+/* ── Page fade-in ────────────────────────────────────────── */
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.loader {
-  position: fixed;
-  inset: 0;
-  background: var(--charcoal);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  /* Self-destructs after 2.4s — no JS required */
-  animation: loaderExit 2.4s ease forwards;
-  transition: opacity 0.6s var(--ease-smooth), visibility 0.6s;
+body {
+  animation: pageFadeIn 0.7s ease forwards;
 }
 
-.loader.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
+/* ── Loader (kept for reference, not used) ───────────────── */
 .loader-logo {
   display: flex;
   flex-direction: column;

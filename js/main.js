@@ -10,26 +10,7 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 /* ── Reduced Motion ──────────────────────────────────────── */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ── 1. LOADER ───────────────────────────────────────────── */
-function initLoader() {
-  const loader = $('#loader');
-  if (!loader || prefersReducedMotion) {
-    loader && loader.classList.add('hidden');
-    return;
-  }
-
-  document.body.classList.add('loading');
-
-  // CSS animation auto-hides the loader at 2.4s regardless of JS.
-  // JS adds .hidden at the same time for a clean state.
-  setTimeout(() => {
-    loader.classList.add('hidden');
-    document.body.classList.remove('loading');
-    setTimeout(animateHeroEntrance, 100);
-  }, 2400);
-}
-
-/* ── 2. HERO ENTRANCE ────────────────────────────────────── */
+/* ── 1. HERO ENTRANCE (fires on page load) ───────────────── */
 function animateHeroEntrance() {
   if (prefersReducedMotion) return;
 
@@ -338,18 +319,16 @@ function init() {
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  // Loader runs regardless of GSAP — uses only setTimeout
-  initLoader();
-
   if (typeof gsap !== 'undefined') {
     initLenis();
     initScrollAnimations();
     initNav();
     initMagneticButtons();
     initServiceCards();
+    // Small delay so fonts are painted before animating
+    setTimeout(animateHeroEntrance, 100);
   }
 
-  // Cursor only needs RAF, not GSAP
   initCursor();
 }
 
