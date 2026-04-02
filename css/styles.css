@@ -17,7 +17,7 @@
   --bronze-pale:  #D4B483;
   --white:        #FFFFFF;
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Instrument Serif', Georgia, serif;
   --font-body:    'Inter', system-ui, sans-serif;
 
   --ease-smooth:  cubic-bezier(0.65, 0, 0.35, 1);
@@ -361,33 +361,16 @@ body.cursor-hover .cursor-ring {
   letter-spacing: 0.08em;
   padding: 0.85rem 2rem;
   border: 1px solid var(--red);
-  transition: background 0.3s var(--ease-smooth),
-              color 0.3s,
-              border-color 0.3s,
-              transform 0.2s;
+  transition: background 0.35s var(--ease-smooth),
+              color 0.35s var(--ease-smooth),
+              border-color 0.35s var(--ease-smooth);
   position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--cream);
-  transform: translateY(101%);
-  transition: transform 0.35s var(--ease-smooth);
-  z-index: 0;
-}
-
-.btn-primary span,
-.btn-primary { z-index: 1; }
-
-.btn-primary:hover::before {
-  transform: translateY(0);
 }
 
 .btn-primary:hover {
+  background: var(--cream);
   color: var(--red);
+  border-color: var(--red);
 }
 
 .btn-ghost {
@@ -402,25 +385,14 @@ body.cursor-hover .cursor-ring {
   letter-spacing: 0.08em;
   padding: 0.85rem 2rem;
   border: 1px solid var(--charcoal);
-  transition: background 0.3s var(--ease-smooth),
-              color 0.3s,
-              border-color 0.3s;
-  position: relative;
-  overflow: hidden;
+  transition: background 0.35s var(--ease-smooth),
+              color 0.35s var(--ease-smooth);
 }
 
-.btn-ghost::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+.btn-ghost:hover {
   background: var(--charcoal);
-  transform: translateY(101%);
-  transition: transform 0.35s var(--ease-smooth);
-  z-index: 0;
+  color: var(--cream);
 }
-
-.btn-ghost:hover::before { transform: translateY(0); }
-.btn-ghost:hover { color: var(--cream); }
 
 .btn-cream {
   display: inline-flex;
@@ -434,24 +406,17 @@ body.cursor-hover .cursor-ring {
   letter-spacing: 0.08em;
   padding: 0.85rem 2rem;
   border: 1px solid var(--cream);
-  transition: background 0.3s var(--ease-smooth), color 0.3s;
+  transition: background 0.35s var(--ease-smooth),
+              color 0.35s var(--ease-smooth),
+              border-color 0.35s var(--ease-smooth);
   white-space: nowrap;
-  position: relative;
-  overflow: hidden;
 }
 
-.btn-cream::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+.btn-cream:hover {
   background: var(--charcoal);
-  transform: translateY(101%);
-  transition: transform 0.35s var(--ease-smooth);
-  z-index: 0;
+  color: var(--cream);
+  border-color: var(--charcoal);
 }
-
-.btn-cream:hover::before { transform: translateY(0); }
-.btn-cream:hover { color: var(--cream); border-color: var(--charcoal); }
 
 /* Magnetic wrapper override */
 .btn-magnetic {
@@ -569,8 +534,9 @@ body.cursor-hover .cursor-ring {
 .section-heading {
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 5vw, 4rem);
-  font-weight: 300;
-  line-height: 1.1;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   color: var(--charcoal);
   margin-bottom: 1.5rem;
 }
@@ -638,8 +604,9 @@ body.cursor-hover .cursor-ring {
 .hero-headline {
   font-family: var(--font-display);
   font-size: clamp(3rem, 7vw, 6.5rem);
-  font-weight: 300;
-  line-height: 1.05;
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
   color: var(--charcoal);
   margin-bottom: 2rem;
   display: flex;
@@ -1172,6 +1139,72 @@ body.cursor-hover .cursor-ring {
   letter-spacing: 0.12em;
   color: rgba(244,239,230,0.3);
   text-align: center;
+}
+
+/* ── Instagram Section ───────────────────────────────────── */
+.instagram-section {
+  background: var(--cream);
+  padding: clamp(5rem, 10vh, 9rem) 0;
+  border-top: 1px solid rgba(140,106,63,0.15);
+}
+
+.instagram-inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+.instagram-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.instagram-handle-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--bronze);
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(140,106,63,0.3);
+  white-space: nowrap;
+}
+
+.instagram-handle-badge span {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
+}
+
+.instagram-tile {
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.instagram-tile .photo-placeholder {
+  min-height: unset;
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+@media (max-width: 768px) {
+  .instagram-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .instagram-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* ── Scroll-locked body during loader ────────────────────── */
