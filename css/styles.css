@@ -367,10 +367,11 @@ body.cursor-hover .cursor-ring {
   position: relative;
 }
 
-.btn-primary:hover {
-  background: var(--cream);
-  color: var(--red);
-  border-color: var(--red);
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--cream) !important;
+  color: var(--red) !important;
+  border-color: var(--red) !important;
 }
 
 .btn-ghost {
@@ -1144,14 +1145,9 @@ body.cursor-hover .cursor-ring {
 /* ── Instagram Section ───────────────────────────────────── */
 .instagram-section {
   background: var(--cream);
-  padding: clamp(5rem, 10vh, 9rem) 0;
+  padding-top: clamp(5rem, 10vh, 9rem);
+  padding-bottom: 0;
   border-top: 1px solid rgba(140,106,63,0.15);
-}
-
-.instagram-inner {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(2.5rem, 5vw, 4rem);
 }
 
 .instagram-header {
@@ -1160,6 +1156,7 @@ body.cursor-hover .cursor-ring {
   justify-content: space-between;
   gap: 2rem;
   flex-wrap: wrap;
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .instagram-handle-badge {
@@ -1170,6 +1167,7 @@ body.cursor-hover .cursor-ring {
   padding: 1rem 1.5rem;
   border: 1px solid rgba(140,106,63,0.3);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .instagram-handle-badge span {
@@ -1179,22 +1177,31 @@ body.cursor-hover .cursor-ring {
   letter-spacing: 0.12em;
 }
 
+/* Full-bleed grid — sits flush at the bottom of the section */
 .instagram-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 2px;
+  gap: 0;
+  width: 100%;
 }
 
 .instagram-tile {
   aspect-ratio: 1;
   overflow: hidden;
-  cursor: pointer;
+  display: block;
+  position: relative;
 }
 
 .instagram-tile .photo-placeholder {
   min-height: unset;
+  width: 100%;
   height: 100%;
   aspect-ratio: 1;
+  border: none;
+}
+
+.instagram-tile + .instagram-tile {
+  border-left: 1px solid rgba(140,106,63,0.15);
 }
 
 @media (max-width: 768px) {
