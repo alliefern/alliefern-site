@@ -1,36 +1,24 @@
 /* ============================================================
-   THE QUIZ ORACLE — Interactions
+   THE QUIZ ORACLE v2 — Interactions
    ============================================================ */
 
-/* ── Redacted word reveal ────────────────────────────────── */
+/* ── Redacted word reveal (click or hover) ───────────────── */
 document.querySelectorAll('.redacted').forEach(el => {
-  // Set the visible word as a data attribute for the CSS to show
-  const word = el.dataset.word || el.textContent;
-  el.textContent = word;
-
-  el.addEventListener('click', () => {
-    el.classList.toggle('revealed');
-  });
+  el.addEventListener('click', () => el.classList.toggle('revealed'));
 });
 
-/* ── Box scroll trigger ──────────────────────────────────── */
+/* ── Box click-to-open ───────────────────────────────────── */
 const box = document.getElementById('mysteryBox');
 
 if (box) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Small delay so user has a beat to register the box before it opens
-          setTimeout(() => {
-            box.classList.add('opened');
-          }, 400);
-          observer.unobserve(box);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
+  const open = () => {
+    if (box.classList.contains('open')) return;
+    box.classList.add('open');
+    box.style.cursor = 'default';
+  };
 
-  observer.observe(box);
+  box.addEventListener('click', open);
+  box.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+  });
 }
