@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Grain Timing Report — Market Timing Report</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Font substitutes: Playfair Display ≈ Freight Display Pro | DM Sans ≈ Halyard Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1E3954;
+      --blue:   #4159A3;
+      --sky:    #4C8DD3;
+      --white:  #ffffff;
+      --off-white: #F7F9FB;
+      --light-gray: #EDF1F6;
+      --mid-gray: #8A9AB0;
+      --text:   #2C3E50;
+      --serif:  'Playfair Display', Georgia, serif;
+      --sans:   'DM Sans', system-ui, sans-serif;
+      --max-w:  860px;
+      --max-w-wide: 1080px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 400;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Typography ──────────────────────────────────────────────── */
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      color: var(--navy);
+      line-height: 1.2;
+      font-weight: 600;
+    }
+
+    h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+    h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); }
+    h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+    h4 { font-size: 1.1rem; font-weight: 600; font-family: var(--sans); color: var(--navy); }
+
+    p { margin-bottom: 1.1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    strong { font-weight: 600; color: var(--navy); }
+
+    /* ─── Layout helpers ──────────────────────────────────────────── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .container--wide {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 80px 0; }
+    section.tight { padding: 56px 0; }
+    section.loose { padding: 100px 0; }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--sky);
+      margin: 0 auto 32px;
+      display: block;
+    }
+    .divider--left { margin: 0 0 28px; }
+
+    /* ─── Announcement Bar ────────────────────────────────────────── */
+    .announcement {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .announcement strong { color: #7EC8F8; font-weight: 600; }
+
+    /* ─── Navigation ──────────────────────────────────────────────── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--light-gray);
+      padding: 18px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: var(--sky); }
+    .nav-cta {
+      background: var(--sky);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue); }
+
+    /* ─── CTA Button ──────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      background: var(--sky);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 4px;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+    }
+    .btn:hover { background: var(--blue); transform: translateY(-1px); }
+    .btn--large { padding: 20px 48px; font-size: 17px; }
+    .btn--outline {
+      background: transparent;
+      border: 2px solid var(--sky);
+      color: var(--sky);
+    }
+    .btn--outline:hover { background: var(--sky); color: var(--white); }
+
+    /* ─── Image / Chart Placeholders ─────────────────────────────── */
+    .placeholder {
+      width: 100%;
+      background: #EDF3F9;
+      border: 2px dashed #B8CCE0;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 36px 24px;
+      color: var(--mid-gray);
+      font-family: var(--sans);
+      font-size: 13px;
+      line-height: 1.5;
+      gap: 8px;
+    }
+    .placeholder-icon {
+      font-size: 28px;
+      opacity: 0.5;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .placeholder strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+    .placeholder.tall { min-height: 340px; }
+    .placeholder.medium { min-height: 240px; }
+    .placeholder.short { min-height: 160px; }
+
+    /* ─── Hero ────────────────────────────────────────────────────── */
+    .hero {
+      background: var(--off-white);
+      padding: 96px 0 80px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .hero .container { text-align: center; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      margin-bottom: 20px;
+      max-width: 740px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--blue);
+    }
+    .hero-sub {
+      font-size: 19px;
+      color: #4A5A6B;
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+      font-weight: 400;
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .promo-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #E8F3FC;
+      border: 1px solid #B8D6EF;
+      border-radius: 4px;
+      padding: 9px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--navy);
+    }
+    .promo-tag strong { color: var(--blue); font-size: 15px; }
+    .hero-footnote {
+      font-size: 13px;
+      color: var(--mid-gray);
+      margin-top: 6px;
+    }
+
+    /* ─── Credibility Strip ───────────────────────────────────────── */
+    .credibility {
+      background: var(--navy);
+      padding: 32px 0;
+    }
+    .cred-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .cred-item {
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      padding: 20px 32px;
+      border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .cred-item:last-child { border-right: none; }
+    .cred-number {
+      display: block;
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .cred-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Letter Section ──────────────────────────────────────────── */
+    .letter {
+      background: var(--white);
+    }
+    .letter-header {
+      margin-bottom: 40px;
+    }
+    .letter-from {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .letter-body {
+      max-width: 640px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #3A4A5C;
+    }
+    .letter-body .em-line {
+      border-left: 3px solid var(--sky);
+      padding-left: 20px;
+      margin: 28px 0;
+      color: var(--navy);
+      font-size: 18px;
+      font-style: italic;
+      font-family: var(--serif);
+    }
+
+    /* ─── Section: Why Timing Matters ────────────────────────────── */
+    .why-timing { background: var(--off-white); }
+    .why-timing .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sky);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .risk-list {
+      list-style: none;
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .risk-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--white);
+      border-radius: 6px;
+      border-left: 3px solid var(--blue);
+      font-size: 16px;
+    }
+    .risk-list li::before {
+      content: '→';
+      color: var(--blue);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── Case Study ──────────────────────────────────────────────── */
+    .case-study { background: var(--white); }
+    .case-study + .case-study { background: var(--off-white); }
+
+    .case-study-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .case-study-grid.reverse { direction: rtl; }
+    .case-study-grid.reverse > * { direction: ltr; }
+
+    .case-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sky);
+      background: #E8F3FC;
+      border-radius: 3px;
+      padding: 5px 12px;
+      margin-bottom: 18px;
+    }
+    .profit-callout {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .profit-callout .amount {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #7EC8F8;
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .profit-callout .label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+    }
+
+    /* ─── Cycle Framework ─────────────────────────────────────────── */
+    .cycle-framework { background: var(--navy); }
+    .cycle-framework h2 { color: var(--white); }
+    .cycle-framework p { color: rgba(255,255,255,0.7); }
+    .cycle-layers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .cycle-layer {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .cycle-layer-num {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--sky);
+      display: block;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .cycle-layer-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+    }
+    .cycle-framework .callout-text {
+      max-width: 640px;
+      margin: 40px auto 0;
+      text-align: center;
+      font-size: 18px;
+      font-style: italic;
+      font-family: var(--serif);
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+    }
+
+    /* ─── What's Inside ──────────────────────────────────────────── */
+    .whats-inside { background: var(--white); }
+    .deliverables {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .deliverable {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 22px 24px;
+      background: var(--off-white);
+      border-radius: 6px;
+      border: 1px solid var(--light-gray);
+    }
+    .deliverable-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--blue);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 16px;
+    }
+    .deliverable-text h4 { margin-bottom: 4px; font-size: 15px; }
+    .deliverable-text p { font-size: 14px; color: #5A6A7A; line-height: 1.5; margin: 0; }
+
+    /* ─── Mid-page CTA ────────────────────────────────────────────── */
+    .mid-cta {
+      background: var(--off-white);
+      text-align: center;
+      border-top: 1px solid var(--light-gray);
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .mid-cta h2 { margin-bottom: 14px; }
+    .mid-cta p { font-size: 18px; color: #4A5A6B; max-width: 520px; margin: 0 auto 36px; }
+    .promo-inline {
+      font-size: 14px;
+      color: var(--mid-gray);
+      margin-top: 14px;
+    }
+    .promo-inline strong { color: var(--blue); }
+
+    /* ─── Testimonials ───────────────────────────────────────────── */
+    .testimonials { background: var(--white); }
+    .testimonials h2 { text-align: center; margin-bottom: 8px; }
+    .testimonials .section-sub {
+      text-align: center;
+      color: var(--mid-gray);
+      font-size: 15px;
+      margin-bottom: 56px;
+    }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .testi-card {
+      background: var(--off-white);
+      border: 1px solid var(--light-gray);
+      border-radius: 8px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .testi-card.featured {
+      grid-column: span 2;
+      background: var(--navy);
+      border-color: transparent;
+    }
+    .testi-card.featured blockquote { color: rgba(255,255,255,0.9); }
+    .testi-card.featured .testi-name { color: var(--white); }
+    .testi-card.featured .testi-title { color: rgba(255,255,255,0.55); }
+    .testi-quote-mark {
+      font-family: var(--serif);
+      font-size: 3rem;
+      line-height: 0.5;
+      color: var(--sky);
+      font-weight: 700;
+    }
+    .testi-card.featured .testi-quote-mark { color: rgba(76,141,211,0.5); }
+    .testi-headline {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .testi-card.featured .testi-headline { color: #7EC8F8; }
+    blockquote {
+      font-size: 15px;
+      color: #4A5A6B;
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .testi-byline {
+      border-top: 1px solid rgba(0,0,0,0.07);
+      padding-top: 16px;
+    }
+    .testi-card.featured .testi-byline { border-top-color: rgba(255,255,255,0.12); }
+    .testi-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--navy);
+    }
+    .testi-title {
+      font-size: 13px;
+      color: var(--mid-gray);
+    }
+    .testi-avatar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--light-gray);
+      border: 2px dashed var(--mid-gray);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--mid-gray);
+    }
+    .testi-card.featured .testi-avatar { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.4); }
+
+    /* ─── Methodology Note ────────────────────────────────────────── */
+    .methodology {
+      background: var(--off-white);
+      border-top: 1px solid var(--light-gray);
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .methodology-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .methodology-inner h3 { margin-bottom: 20px; }
+    .methodology-inner p { color: #4A5A6B; font-size: 16px; }
+
+    /* ─── FAQ ─────────────────────────────────────────────────────── */
+    .faq { background: var(--white); }
+    .faq h2 { text-align: center; margin-bottom: 52px; }
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .faq-item:first-child { border-top: 1px solid var(--light-gray); }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--navy);
+      text-align: left;
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-chevron {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      color: var(--sky);
+      transition: transform 0.25s;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a {
+      display: none;
+      padding: 0 0 22px;
+      color: #4A5A6B;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ─── Final CTA ───────────────────────────────────────────────── */
+    .final-cta {
+      background: var(--navy);
+      text-align: center;
+      padding: 100px 0;
+    }
+    .final-cta h2 { color: var(--white); margin-bottom: 16px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .final-cta p { color: rgba(255,255,255,0.65); font-size: 18px; max-width: 500px; margin: 0 auto 40px; }
+    .final-cta .btn { background: var(--sky); }
+    .final-cta .btn:hover { background: #3B7EC4; }
+    .final-cta .guarantee {
+      margin-top: 20px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ─── Footer ──────────────────────────────────────────────────── */
+    footer {
+      background: #111E2B;
+      padding: 48px 24px;
+      text-align: center;
+    }
+    footer .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    footer .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+    }
+    footer .footer-links a:hover { color: rgba(255,255,255,0.7); }
+    footer .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ─── Wireframe annotation style ─────────────────────────────── */
+    .wf-note {
+      font-size: 11px;
+      font-family: monospace;
+      background: #FFF8E1;
+      border: 1px solid #F5D87A;
+      border-radius: 3px;
+      padding: 4px 10px;
+      color: #7A5800;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    /* ─── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      .case-study-grid { grid-template-columns: 1fr; gap: 40px; }
+      .case-study-grid.reverse { direction: ltr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .testi-card.featured { grid-column: span 1; }
+      .deliverables { grid-template-columns: 1fr; }
+      .cred-grid { flex-direction: column; }
+      .cred-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .cred-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Announcement Bar ─────────────────────────────────────────── -->
+  <div class="announcement">
+    Now 25% off — Use code <strong>GRAINS25OFF</strong> at checkout &nbsp;·&nbsp; Limited time offer
+  </div>
+
+  <!-- ── Navigation ───────────────────────────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Market Timing <span>Report</span></a>
+      <a href="#get-report" class="nav-cta">Get the Report →</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">The Grain Timing Report · 2026</span>
+      <h1>Grain Market Turning Points,<br><em>Identified Before the Move Begins</em></h1>
+      <p class="hero-sub">
+        A structured cycle-analysis framework that maps high-probability reversal windows in wheat, corn, and soybeans — so you can position before markets shift, not after.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#get-report" class="btn btn--large" id="get-report">Get the 2026 Grain Timing Reports</a>
+        <div class="promo-tag">
+          25% off with code <strong>GRAINS25OFF</strong>
+        </div>
+        <p class="hero-footnote">Updated monthly · Includes annual forecast curve · Daily probability windows</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Credibility Strip ─────────────────────────────────────────── -->
+  <div class="credibility">
+    <div class="container--wide">
+      <div class="cred-grid">
+        <div class="cred-item">
+          <span class="cred-number">30+</span>
+          <span class="cred-label">Years of market cycle research</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-number">3</span>
+          <span class="cred-label">Grain markets covered monthly</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-number">$40K+</span>
+          <span class="cred-label">Potential per contract, 2020 wheat</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-number">Public</span>
+          <span class="cred-label">Documented track record</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Letter from Andrew ────────────────────────────────────────── -->
+  <section class="letter">
+    <div class="container">
+      <div class="letter-header">
+        <span class="letter-from">From the desk of Andrew Pancholi — London, UK</span>
+        <span class="divider divider--left"></span>
+        <h2>A note to traders and investors</h2>
+      </div>
+      <div class="letter-body">
+        <p>
+          The 2025 Grain Timing Reports identified several major market turning points in advance — forecasts that are documented in our public track record.
+        </p>
+        <p>
+          As we look ahead to 2026, a number of significant cycle intersections are developing across the grain markets. Several of these timing windows are expected to occur within the coming months.
+        </p>
+        <div class="em-line">
+          For traders who follow cycle-based analysis, these periods often coincide with some of the most important opportunities of the year.
+        </div>
+        <p>
+          The purpose of this report is to outline those timing windows — in advance, with enough specificity to act on them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Why Timing Matters ────────────────────────────────────────── -->
+  <section class="why-timing">
+    <div class="container">
+      <span class="section-label">The Core Problem</span>
+      <h2>Why Timing Matters More<br>Than Trend Following</h2>
+      <p style="max-width:580px; margin-top:16px;">
+        Trend strategies work — until they don't. The real risk isn't being wrong. The real cost is structural:
+      </p>
+      <ul class="risk-list">
+        <li>Entering a position after the move has already begun</li>
+        <li>Exiting after the reversal has already started</li>
+        <li>Giving back profits while waiting for confirmation</li>
+      </ul>
+      <p style="max-width:580px;">
+        Cycle-based timing doesn't replace your analysis — it tells you <strong>when</strong> markets are most statistically likely to transition from consolidation into a new directional trend. That's the window where risk/reward is most favorable.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Case Study: Wheat 2020 ─────────────────────────────────────── -->
+  <section class="case-study">
+    <div class="container">
+      <div class="case-study-grid">
+        <div>
+          <span class="case-tag">Case Study · October 2020</span>
+          <h2>The Wheat Cycle Turning Point — Identified Weeks Before the Move</h2>
+          <p>
+            At this point in the market, the Grain Timing Report identified a rare long-term cycle reversal window in wheat — several weeks before the move began.
+          </p>
+          <p>
+            Subscribers were alerted that a major multi-year cycle low was approaching. The forecast indicated wheat was nearing the end of a prolonged consolidation phase and was likely preparing to enter a new directional trend.
+          </p>
+          <div class="profit-callout">
+            <span class="amount">$40,000+</span>
+            <span class="label">Potential profit per futures contract from the identified cycle low</span>
+          </div>
+          <p>
+            What followed was one of the strongest wheat moves in years — nearly tripling from the lows during the cycle expansion. Supply disruptions and geopolitical events accelerated the trend, but the timing window had already been identified through cycle analysis.
+          </p>
+        </div>
+        <div>
+          <div class="wf-note">📷 PHOTO PLACEHOLDER</div>
+          <div class="placeholder tall">
+            <span class="placeholder-icon">📈</span>
+            <strong>Wheat Chart: Oct 2020 Cycle Turn</strong>
+            Annotated chart showing the October 2020 wheat cycle low with cycle lines overlaid. Blue lines = monthly cycles. Magenta = weekly. Red/green arrows = daily turning points. Show the subsequent sustained advance.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Case Study: Soybeans 2025 ────────────────────────────────── -->
+  <section class="case-study">
+    <div class="container">
+      <div class="case-study-grid reverse">
+        <div>
+          <span class="case-tag">Case Study · Soybeans · Through Feb 2026</span>
+          <h2>How the Soybean Cycle Blueprint Performed</h2>
+          <p>
+            Our clients receive forecasted blueprints like this before the market moves. The chart below shows how the Grain Timing Report mapped soybeans through February 2026.
+          </p>
+          <p>Key elements visible in every monthly report:</p>
+          <ul style="list-style:none; margin: 20px 0; display: flex; flex-direction: column; gap: 12px;">
+            <li style="display:flex; gap:12px; align-items:flex-start;">
+              <span style="color:#4159A3; font-weight:700; flex-shrink:0;">●</span>
+              <span><strong>Blue lines</strong> — Monthly cycles, called in advance</span>
+            </li>
+            <li style="display:flex; gap:12px; align-items:flex-start;">
+              <span style="color:#c040a0; font-weight:700; flex-shrink:0;">●</span>
+              <span><strong>Magenta lines</strong> — Weekly cycles, called in advance</span>
+            </li>
+            <li style="display:flex; gap:12px; align-items:flex-start;">
+              <span style="color:#e03030; font-weight:700; flex-shrink:0;">●</span>
+              <span><strong>Red &amp; green arrows</strong> — Daily turning points, often precise to the day</span>
+            </li>
+          </ul>
+          <p style="font-size:15px; color:#4A5A6B;">
+            Note how overlapping weekly and monthly cycles produced the significant reversals at the Feb 2025 high, the late July 2025 low, and the November 2025 high. Where cycles overlap, major reversals happen.
+          </p>
+          <div class="profit-callout">
+            <span class="amount">$40,000+</span>
+            <span class="label">Approximate move per contract, soybeans cycle</span>
+          </div>
+        </div>
+        <div>
+          <div class="wf-note">📊 CHART PLACEHOLDER</div>
+          <div class="placeholder tall">
+            <span class="placeholder-icon">📊</span>
+            <strong>Soybean Cycle Blueprint Chart</strong>
+            The annotated soybean forecast chart from the report. Show the actual forecast curve overlaid on price. Annotate: Feb 2025 high, late July 2025 low, Nov 2025 high. Blue lines (monthly), magenta (weekly), red/green arrows (daily turning points).
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Cycle Framework ───────────────────────────────────────────── -->
+  <section class="cycle-framework tight">
+    <div class="container">
+      <span class="divider"></span>
+      <h2 style="text-align:center; max-width:560px; margin: 0 auto 20px;">The Cycle Framework Behind the Report</h2>
+      <p style="text-align:center; max-width:520px; margin: 0 auto;">
+        The Grain Timing Report maps markets across multiple cycle layers. When multiple layers converge, the probability of a major market inflection point increases significantly.
+      </p>
+      <div class="cycle-layers">
+        <div class="cycle-layer">
+          <span class="cycle-layer-num">01</span>
+          <span class="cycle-layer-label">Long-term macro cycles</span>
+        </div>
+        <div class="cycle-layer">
+          <span class="cycle-layer-num">02</span>
+          <span class="cycle-layer-label">Annual forecast curves</span>
+        </div>
+        <div class="cycle-layer">
+          <span class="cycle-layer-num">03</span>
+          <span class="cycle-layer-label">Monthly cycle intersections</span>
+        </div>
+        <div class="cycle-layer">
+          <span class="cycle-layer-num">04</span>
+          <span class="cycle-layer-label">Weekly timing windows</span>
+        </div>
+        <div class="cycle-layer">
+          <span class="cycle-layer-num">05</span>
+          <span class="cycle-layer-label">Daily probability turning points</span>
+        </div>
+      </div>
+      <p class="callout-text">
+        "When weekly cycles coincide with monthly cycles, we get significant trend changes — that's exactly what happened with the highs in February and November 2025 and the low in late July 2025."
+      </p>
+    </div>
+  </section>
+
+  <!-- ── What's Inside ─────────────────────────────────────────────── -->
+  <section class="whats-inside">
+    <div class="container">
+      <span class="divider divider--left"></span>
+      <h2>What You'll Get Inside the<br>Grain Timing Report</h2>
+      <p style="max-width:560px; margin-top:16px; color:#4A5A6B;">
+        Each monthly report translates complex cycle analysis into a clear, actionable timing roadmap — no guesswork, no interpretation required.
+      </p>
+      <div class="deliverables">
+        <div class="deliverable">
+          <div class="deliverable-icon">▲</div>
+          <div class="deliverable-text">
+            <h4>Annual Forecast Curve</h4>
+            <p>High-level roadmap of expected market direction and major turning windows for the full year.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-icon">◎</div>
+          <div class="deliverable-text">
+            <h4>Major 2026 Turning Points</h4>
+            <p>Specific high-probability turning point dates based on the PFO cycle system — identified in advance.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-icon">↻</div>
+          <div class="deliverable-text">
+            <h4>Monthly Updated Reports</h4>
+            <p>High-probability daily turning points, refreshed each month as new cycle windows emerge.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-icon">⊞</div>
+          <div class="deliverable-text">
+            <h4>Risk Management Charts</h4>
+            <p>Precise entry and exit zones to support disciplined position sizing and trade execution.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-icon">%</div>
+          <div class="deliverable-text">
+            <h4>Daily Percentage Probabilities</h4>
+            <p>Quantified probability scores based on historical timing models — not gut feel.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-icon">⊕</div>
+          <div class="deliverable-text">
+            <h4>Seasonal Trade Setups</h4>
+            <p>Seasonal patterns filtered for alignment with this year's annual forecast — not generic seasonality.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Mid-page CTA ──────────────────────────────────────────────── -->
+  <section class="mid-cta tight">
+    <div class="container">
+      <h2>Position for the Rest of 2026 — Now</h2>
+      <p>Several high-probability timing windows are expected in the coming months. The report gives you the roadmap before the move becomes obvious.</p>
+      <a href="#" class="btn btn--large">Get the 2026 Grain Timing Reports</a>
+      <p class="promo-inline">25% off with code <strong>GRAINS25OFF</strong> · Limited time</p>
+    </div>
+  </section>
+
+  <!-- ── Testimonials ──────────────────────────────────────────────── -->
+  <section class="testimonials loose">
+    <div class="container">
+      <h2>What Our Members Are Saying</h2>
+      <p class="section-sub">Traders, hedgers, and portfolio managers on how cycle timing changed their approach</p>
+      <div class="testi-grid">
+
+        <!-- Featured testimonial -->
+        <div class="testi-card featured">
+          <div class="testi-quote-mark">"</div>
+          <div class="testi-headline">From Frustration to Financial Success</div>
+          <blockquote>
+            "Over two days, I paid for your entire course and one year's subscription through commodities trading and following the system. It was huge. Through your risk mitigation strategies, I was able to protect myself when the market turned a few months later — that was a game changer that previously would've sunk me. As a beginner, I'd only ever had losses. Your trading system and monthly reports have enabled me to take control of my trading and investments."
+          </blockquote>
+          <div class="testi-byline">
+            <div class="testi-avatar-row">
+              <div class="testi-avatar">
+                <div class="wf-note" style="font-size:9px; border:none; background:none; padding:0; color:inherit;">photo</div>
+              </div>
+              <div>
+                <div class="testi-name">Ketan Ladva</div>
+                <div class="testi-title">Vancouver, CA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-quote-mark">"</div>
+          <div class="testi-headline">Position Strategically Before the Markets Turn</div>
+          <blockquote>
+            "I find Andy's cycle analytics very helpful in positioning my portfolio. The 90-year cycle has been very important — Andy's work enabled me to get mainly into cash before the markets turned. Knowing when cycles are likely to occur is essential trade decision assistance."
+          </blockquote>
+          <div class="testi-byline">
+            <div class="testi-avatar-row">
+              <div class="testi-avatar" style="font-size:9px;">photo</div>
+              <div>
+                <div class="testi-name">John Morris</div>
+                <div class="testi-title">FX Blue</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-quote-mark">"</div>
+          <div class="testi-headline">The Best System I've Ever Seen for Trading Success</div>
+          <blockquote>
+            "I am astounded by his knowledge of the markets, in particular the analysis of economic cycles. It has completely changed my outlook on trading. I now use a combination of market cycles, chart geometry, and Commitment of Traders data. I have much more probability on my side."
+          </blockquote>
+          <div class="testi-byline">
+            <div class="testi-avatar-row">
+              <div class="testi-avatar" style="font-size:9px;">photo</div>
+              <div>
+                <div class="testi-name">Dr. Richard Malloch</div>
+                <div class="testi-title"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-quote-mark">"</div>
+          <div class="testi-headline">The Most Accurate Cycles Forecast for Major Markets</div>
+          <blockquote>
+            "Andrew Pancholi's Market Timing Report is consistently the most accurate cycles forecast there is for traders of major markets."
+          </blockquote>
+          <div class="testi-byline">
+            <div class="testi-avatar-row">
+              <div class="testi-avatar" style="font-size:9px;">photo</div>
+              <div>
+                <div class="testi-name">Peter Temple</div>
+                <div class="testi-title"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-quote-mark">"</div>
+          <div class="testi-headline">Unmatched Expertise in Cycles Analysis</div>
+          <blockquote>
+            "He knows cycles better than anybody I've ever met, and I've studied cycles all my life."
+          </blockquote>
+          <div class="testi-byline">
+            <div class="testi-avatar-row">
+              <div class="testi-avatar" style="font-size:9px;">photo</div>
+              <div>
+                <div class="testi-name">Harry S. Dent</div>
+                <div class="testi-title">New York Times Bestselling Author, Renowned Forecaster</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-quote-mark">"</div>
+          <div class="testi-headline">Essential for Success in Volatile Markets</div>
+          <blockquote>
+            "The MTR is the most progressive way to make informed choices on how to position yourself even in the most volatile markets. The information and time cycles published are absolutely invaluable to our success. We would recommend these services to any serious investor."
+          </blockquote>
+          <div class="testi-byline">
+            <div class="testi-avatar-row">
+              <div class="testi-avatar" style="font-size:9px;">photo</div>
+              <div>
+                <div class="testi-name">Daniel Malsbury</div>
+                <div class="testi-title">City of London Markets</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Methodology Note ──────────────────────────────────────────── -->
+  <section class="methodology tight">
+    <div class="container">
+      <div class="methodology-inner">
+        <span class="divider"></span>
+        <h3>A Note on Cycle Analysis</h3>
+        <p>
+          Markets are influenced by many factors — supply, demand, policy, and geopolitical events. Cycle analysis does not predict those events directly. Instead, it identifies periods when markets are statistically more likely to transition from one phase to another. These windows often align with major shifts in sentiment, positioning, and volatility.
+        </p>
+        <p style="margin-top:16px;">
+          The Grain Timing Report is designed to highlight those windows <strong>before the move becomes obvious to the broader market.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ──────────────────────────────────────────────────────── -->
+  <section class="faq">
+    <div class="container">
+      <h2>Your Questions Answered</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q">
+            What exactly is the Grain Timing Report?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            The Grain Timing Report is a structured, cycle-based timing report covering wheat, corn, and soybeans. Each month you receive an updated blueprint of high-probability reversal windows — including daily turning points, probability scores, risk management charts, and seasonal setups — all mapped against the annual forecast curve generated by the Cycles Analysis Profit Finding Oracle (PFO).
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            How is this different from traditional grain market analysis?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Traditional analysis reacts to what markets have already done. Cycle analysis identifies the timing windows before the move occurs. This means you're positioning at the point of maximum opportunity — before sentiment shifts, before confirmation, before the broader market catches up.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            How should I use this in my own trading or hedging strategy?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            The report is designed to integrate with your existing approach — whether you trade futures, options, or use it for hedging physical grain exposure. Many subscribers use the timing windows to refine entry and exit points, and the risk management charts to set stops and targets.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            What level of experience do I need?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            The report is used by traders, hedgers, and portfolio managers at all levels — from those with decades of commodity experience to those building their first systematic approach. The format is clear and structured, with no requirement to understand the cycle mathematics behind it.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            How far in advance are turning points identified?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            The Annual Forecast Curve maps the full year in advance. Major turning point windows are identified at least 2–4 weeks ahead. Daily probability windows are refined each month as the cycle layer data updates.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            What makes 2026 particularly important for grain markets?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Several significant cycle intersections are developing across wheat, corn, and soybeans in 2026. When long-term macro cycles converge with annual and seasonal cycles, the probability of a major market inflection increases substantially. We are currently approaching one of those convergence windows.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            How does this integrate with fundamental analysis — weather, supply, geopolitics?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Cycle analysis doesn't replace fundamental data — it complements it. The 2020 wheat move is a good example: supply disruptions and geopolitical factors accelerated the trend, but the timing window was identified through cycle analysis weeks before those events became the narrative. Cycles identify the window; fundamentals often explain it after the fact.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Why is the report discounted right now?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            The 25% discount (code: GRAINS25OFF) is a time-limited offer. We're running it now because a number of significant timing windows are approaching — and we want serious traders to have access to the full 2026 roadmap before those windows open, not after.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Who is this typically used by?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Our subscriber base includes active futures and options traders, commodity hedge funds, agricultural hedgers managing physical grain exposure, and portfolio managers looking to add a structured timing overlay to existing commodity allocations.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Do you offer more personalized guidance?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Yes. Andrew works with a select number of private clients who require more tailored analysis. Contact us at support@cyclesanalysis.com to discuss availability and scope.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            What happens after I purchase?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            You'll receive immediate access to the current month's Grain Timing Report, plus the 2026 Annual Forecast Curve. Reports are delivered monthly via email and accessible through your member portal.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Final CTA ─────────────────────────────────────────────────── -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Get the 2026 Grain Timing Reports</h2>
+      <p>Several major cycle windows are approaching. Position before the markets shift — not after.</p>
+      <a href="#" class="btn btn--large">Get Instant Access — 25% Off</a>
+      <p class="guarantee">Use code GRAINS25OFF at checkout · support@cyclesanalysis.com</p>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-logo">The Market Timing Report</div>
+    <nav class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="footer-copy">© 2026 The Market Timing Report · By Andrew Pancholi · support@cyclesanalysis.com</p>
+  </footer>
+
+  <!-- ── FAQ Accordion ──────────────────────────────────────────────── -->
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
