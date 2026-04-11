@@ -16,12 +16,9 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
-  <!-- GSAP + Lenis loaded at end of body, no defer -->
-
-  <link rel="stylesheet" href="css/styles.css?v=3" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
 
   <!-- Schema -->
   <script type="application/ld+json">
@@ -40,7 +37,6 @@
   <!-- Custom Cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
-
 
   <!-- ===================== NAV ===================== -->
   <nav class="nav" id="nav">
@@ -69,6 +65,7 @@
       <li><a href="#work" class="mobile-link">Work</a></li>
       <li><a href="#about" class="mobile-link">About</a></li>
       <li><a href="pricing.html" class="mobile-link">Pricing</a></li>
+      <li><a href="quiz-oracle.html" class="mobile-link">Quiz Oracle</a></li>
       <li><a href="#contact" class="mobile-link">Contact</a></li>
     </ul>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary mobile-cta">Apply Now</a>
@@ -76,33 +73,25 @@
 
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="hero">
-    <div class="hero-bg-grid"></div>
+    <div class="hero-bg">
+      <img src="https://i.ibb.co/1tQKD4q2/24be93e0-8a42-4bf6-9a9d-35bd7d4c117d.png" alt="" aria-hidden="true" class="hero-bg-img" />
+      <div class="hero-overlay"></div>
+    </div>
 
     <div class="hero-inner">
-      <p class="hero-overline reveal-line">
-        ALLIE FERN &mdash; Design &amp; Strategy for High-Ticket Women Ready to Bridge the Gap From $20k+ Months into $50k and Beyond
-      </p>
-
+      <p class="hero-script reveal-line">Design &amp; Strategy for High-Ticket Women</p>
       <h1 class="hero-headline">
         <span class="reveal-word">Your brand is</span>
-        <span class="reveal-word hero-accent">making you hella money.</span>
+        <span class="reveal-word"><em>making you hella money.</em></span>
       </h1>
-
-      <div class="hero-body reveal-block">
-        <p>But you know deep down that it could be making <em>wayyyy</em> more. And currently, you sit at the intersection of knowing that, and not really knowing HOW to implement changes that will shore up that gap.</p>
-        <p>When we work together, I help build a bridge over that gap with visuals, strategy, and implementation so you can start making the kind of <strong>fuck-you money</strong> you have always known you're capable of.</p>
-      </div>
-
+      <p class="hero-sub reveal-block">
+        But you know deep down that it could be making <em>wayyyy</em> more. And currently, you sit at the intersection of knowing that, and not really knowing HOW to implement changes that will shore up that gap.
+      </p>
       <div class="hero-cta reveal-block">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-light btn-magnetic">
           Literally sign me up right tf now &rarr;
         </a>
       </div>
-    </div>
-
-    <!-- Hero Photo -->
-    <div class="hero-photo reveal-block" aria-label="Photo of Allie Fern">
-      <img src="https://i.ibb.co/1tQKD4q2/24be93e0-8a42-4bf6-9a9d-35bd7d4c117d.png" alt="Allie Fern" class="hero-img" />
     </div>
 
     <div class="hero-scroll-indicator">
@@ -141,16 +130,28 @@
     </div>
   </div>
 
+  <!-- ===================== STATEMENT ===================== -->
+  <section class="statement">
+    <div class="container">
+      <div class="statement-box reveal-block">
+        <span class="statement-script">the honest truth...</span>
+        <h2 class="statement-heading">
+          What I do isn&rsquo;t &ldquo;graphic design&rdquo;.<br />
+          It&rsquo;s <em>REVENUE INCREASE.</em>
+        </h2>
+        <p class="statement-body">Every asset I build, every brand decision I make, every layout I touch&hellip; it&rsquo;s all in service of one thing: making your business more money than it was making before I showed up.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-ghost-light btn-magnetic">Get a taste of working together &rarr;</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== SERVICES ===================== -->
   <section class="services" id="services">
     <div class="services-intro container">
       <p class="section-overline reveal-line">WHAT WE DO</p>
       <h2 class="section-heading reveal-heading">
-        What I do isn&rsquo;t &ldquo;graphic design&rdquo;.<br />
-        It&rsquo;s <em>REVENUE INCREASE.</em>
+        Ready to build a brand<br /><em>that actually closes?</em>
       </h2>
-      <p class="section-sub reveal-block">Every asset I build, every brand decision I make, every layout I touch&hellip; it&rsquo;s all in service of one thing: making your business more money than it was making before I showed up.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-ghost btn-magnetic reveal-block">Get a taste of working together &rarr;</a>
     </div>
 
     <div class="services-grid container">
@@ -164,10 +165,9 @@
           <p class="service-note">One spot available to start in April 2026.</p>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">Apply Now &rarr;</a>
         </div>
-        <div class="service-card-accent"></div>
       </div>
 
-      <div class="service-card reveal-card">
+      <div class="service-card service-card--featured reveal-card">
         <div class="service-card-inner">
           <div class="service-tag">02</div>
           <h3 class="service-name">Website Makeover</h3>
@@ -175,7 +175,6 @@
           <p class="service-desc">Your website isn&rsquo;t broken. It&rsquo;s just not converting. I take what you have and rebuild it into a luxury-level, high-converting asset that actually closes. Squarespace, Kajabi, GHL&hellip; whatever you&rsquo;re on, I&rsquo;ll make it work harder.</p>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">Apply Now &rarr;</a>
         </div>
-        <div class="service-card-accent"></div>
       </div>
 
       <div class="service-card reveal-card">
@@ -186,9 +185,12 @@
           <p class="service-desc">Your podcast is a sales tool that isn&rsquo;t dressed like one yet. I take your existing presence and turn it into a brand-aligned asset that builds authority and converts listeners into clients.</p>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">Apply Now &rarr;</a>
         </div>
-        <div class="service-card-accent"></div>
       </div>
 
+    </div>
+
+    <div class="services-footer container reveal-block">
+      <a href="pricing.html" class="btn-ghost btn-magnetic">See the full pricing list &rarr;</a>
     </div>
   </section>
 
@@ -214,33 +216,29 @@
 
     <div class="work-grid container">
       <div class="work-item work-item--wide reveal-card">
-        <img src="https://i.ibb.co/C3bwyZyW/a8b2072-bc40-a00f-6ac5-1e1cde60516d-Lisa-Duncan-Day-of-Design-4.png" alt="Lisa Duncan Day of Design" class="work-img" />
+        <img src="https://i.ibb.co/C3bwyZyW/a8b2072-bc40-a00f-6ac5-1e1cde60516d-Lisa-Duncan-Day-of-Design-4.png" alt="Lisa Duncan Day of Design" class="work-img" loading="lazy" />
       </div>
       <div class="work-item work-item--tall reveal-card">
-        <img src="https://i.ibb.co/9H1rL815/1680b4d-523-8614-3bfb-7770d4faea2f-Lipstick-Mockup.png" alt="Lipstick Mockup Brand Design" class="work-img" />
+        <img src="https://i.ibb.co/9H1rL815/1680b4d-523-8614-3bfb-7770d4faea2f-Lipstick-Mockup.png" alt="Lipstick Mockup Brand Design" class="work-img" loading="lazy" />
       </div>
       <div class="work-item reveal-card">
-        <img src="https://i.ibb.co/WpYB8tzb/e406d1-32b1-1d3a-e627-2bc85fbe4171-HER-NEXT-LEVEL-One-Page-Brand-Guide.png" alt="Her Next Level Brand Guide" class="work-img" />
+        <img src="https://i.ibb.co/WpYB8tzb/e406d1-32b1-1d3a-e627-2bc85fbe4171-HER-NEXT-LEVEL-One-Page-Brand-Guide.png" alt="Her Next Level Brand Guide" class="work-img" loading="lazy" />
       </div>
       <div class="work-item reveal-card">
-        <img src="https://i.ibb.co/1Gyq6tNH/ade0bea-b0d8-cc24-cb-a70e24f4c2df-sticker-mockups-mikayla.png" alt="Sticker Mockups Mikayla" class="work-img" />
+        <img src="https://i.ibb.co/1Gyq6tNH/ade0bea-b0d8-cc24-cb-a70e24f4c2df-sticker-mockups-mikayla.png" alt="Sticker Mockups Mikayla" class="work-img" loading="lazy" />
       </div>
       <div class="work-item reveal-card">
-        <img src="https://i.ibb.co/gbq0KG1b/4bd62c8-82d7-8d5-5ac-d688c3b12162-style-matrix-mockup-3.png" alt="Style Matrix Mockup" class="work-img" />
+        <img src="https://i.ibb.co/gbq0KG1b/4bd62c8-82d7-8d5-5ac-d688c3b12162-style-matrix-mockup-3.png" alt="Style Matrix Mockup" class="work-img" loading="lazy" />
       </div>
       <div class="work-item work-item--wide reveal-card">
-        <img src="https://i.ibb.co/Z68ph7DF/8d4cf1f-33d-224-e06-d12ce6bcce81-style-matrix-mockup-2.png" alt="Style Matrix Mockup 2" class="work-img" />
+        <img src="https://i.ibb.co/Z68ph7DF/8d4cf1f-33d-224-e06-d12ce6bcce81-style-matrix-mockup-2.png" alt="Style Matrix Mockup 2" class="work-img" loading="lazy" />
       </div>
       <div class="work-item reveal-card">
-        <img src="https://i.ibb.co/67LrZRDp/f2150f-3bd0-708-5bfd-bcb137278fba-Brand-Guidelines-4.png" alt="Brand Guidelines" class="work-img" />
+        <img src="https://i.ibb.co/67LrZRDp/f2150f-3bd0-708-5bfd-bcb137278fba-Brand-Guidelines-4.png" alt="Brand Guidelines" class="work-img" loading="lazy" />
       </div>
       <div class="work-item reveal-card">
-        <img src="https://i.ibb.co/Q7rnJLHJ/03da1e-232-0f8-8e76-138da2ee6b-please-without-changing-much-of-1.png" alt="Brand Design" class="work-img" />
+        <img src="https://i.ibb.co/Q7rnJLHJ/03da1e-232-0f8-8e76-138da2ee6b-please-without-changing-much-of-1.png" alt="Brand Design" class="work-img" loading="lazy" />
       </div>
-    </div>
-
-    <div class="work-cta container reveal-block">
-      <a href="#" class="btn-ghost btn-magnetic">View more work &rarr;</a>
     </div>
   </section>
 
@@ -249,7 +247,7 @@
     <div class="about-inner container">
 
       <div class="about-photo reveal-card">
-        <img src="https://i.ibb.co/1tQKD4q2/24be93e0-8a42-4bf6-9a9d-35bd7d4c117d.png" alt="Allie Fern" class="about-img" />
+        <img src="https://i.ibb.co/1tQKD4q2/24be93e0-8a42-4bf6-9a9d-35bd7d4c117d.png" alt="Allie Fern" class="about-img" loading="lazy" />
       </div>
 
       <div class="about-content">
@@ -272,7 +270,7 @@
   <!-- ===================== EMAIL CTA ===================== -->
   <section class="email-cta" id="contact">
     <div class="email-cta-inner container">
-      <p class="section-overline reveal-line" style="color: var(--cream-light); opacity: 0.6;">JOIN THE LIST</p>
+      <span class="email-cta-script reveal-line">stay in the loop</span>
       <h2 class="section-heading reveal-heading">The best brands aren&rsquo;t built by accident.</h2>
       <p class="section-sub reveal-block">Join the list for design and strategy insights that actually move the needle, straight to your inbox.</p>
 
@@ -304,14 +302,13 @@
         </div>
       </div>
     </div>
-    <!-- Full-bleed grid outside container -->
     <div class="instagram-grid">
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><div class="work-hover-overlay"><span>VIEW</span></div><span class="placeholder-label">[ Photo ]</span></div></a>
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><div class="work-hover-overlay"><span>VIEW</span></div><span class="placeholder-label">[ Photo ]</span></div></a>
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><div class="work-hover-overlay"><span>VIEW</span></div><span class="placeholder-label">[ Photo ]</span></div></a>
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><div class="work-hover-overlay"><span>VIEW</span></div><span class="placeholder-label">[ Photo ]</span></div></a>
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><div class="work-hover-overlay"><span>VIEW</span></div><span class="placeholder-label">[ Photo ]</span></div></a>
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><div class="work-hover-overlay"><span>VIEW</span></div><span class="placeholder-label">[ Photo ]</span></div></a>
+      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
+      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
+      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
+      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
+      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
+      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
     </div>
   </section>
 
@@ -329,6 +326,7 @@
         <a href="#work">Work</a>
         <a href="#about">About</a>
         <a href="pricing.html">Pricing</a>
+        <a href="quiz-oracle.html">Quiz Oracle</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -350,9 +348,7 @@
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <!-- Lenis Smooth Scroll (updated package name) -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-
   <script src="js/main.js"></script>
 </body>
 </html>

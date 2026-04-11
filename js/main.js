@@ -141,11 +141,11 @@ function initScrollAnimations() {
     );
   });
 
-  // Hero photo gentle parallax
-  const hp = $('.hero-photo');
-  if (hp) {
-    gsap.to(hp, {
-      y: -50, ease: 'none',
+  // Hero background parallax
+  const heroBgImg = $('.hero-bg-img');
+  if (heroBgImg) {
+    gsap.to(heroBgImg, {
+      y: '20%', ease: 'none',
       scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5 }
     });
   }
