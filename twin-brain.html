@@ -139,110 +139,115 @@
        HERO
     ===================================================== */
     #hero {
-      min-height: 100svh;
+      position: sticky;
+      top: 0;
+      height: 100svh;
+      z-index: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: clamp(6rem, 12vw, 10rem) 0 clamp(5rem, 8vw, 8rem);
-      border-bottom: 1px solid var(--border);
-      position: relative;
+      justify-content: flex-end;
+      overflow: hidden;
     }
 
-    #hero::before {
-      content: '';
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(184, 147, 90, 0.04) 0%, transparent 70%);
-      pointer-events: none;
+      z-index: 0;
     }
 
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: clamp(3rem, 6vw, 6rem);
-      align-items: center;
-    }
-
-    .hero-text { display: flex; flex-direction: column; }
-
-    .hero-photo-wrap {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      aspect-ratio: 3 / 4;
-      flex-shrink: 0;
-    }
-
-    .hero-photo-wrap img {
+    .hero-bg img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top center;
+      object-position: center 20%;
       display: block;
     }
 
-    .hero-photo-wrap::after {
-      content: '';
+    .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%);
-      pointer-events: none;
+      background: linear-gradient(
+        160deg,
+        rgba(13,13,13,0.08) 0%,
+        rgba(13,13,13,0.38) 40%,
+        rgba(13,13,13,0.82) 72%,
+        rgba(13,13,13,0.97) 100%
+      );
     }
 
-    @media (max-width: 820px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-      .hero-photo-wrap {
-        max-width: 320px;
-        margin: 2.5rem auto 0;
-        aspect-ratio: 4 / 5;
-      }
+    /* All content sections slide over the sticky hero */
+    section:not(#hero) {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 0 clamp(3.5rem, 7vw, 5.5rem);
     }
 
     .hero-eyebrow {
       font-family: var(--sans);
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 500;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       display: block;
     }
 
     .hero-headline {
       font-family: var(--serif);
-      font-size: clamp(2rem, 4.5vw, 3.75rem);
+      font-size: clamp(2.5rem, 5.5vw, 5.25rem);
       font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
       color: var(--text);
-      margin-bottom: 2.25rem;
+      margin-bottom: 2.5rem;
     }
 
-    .hero-sub {
-      font-size: clamp(1rem, 1.5vw, 1.125rem);
+    .hero-headline .another-prefix {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.5em;
       font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: var(--text-mid);
-      max-width: 58ch;
-      line-height: 1.8;
-      margin-bottom: 1.75rem;
+      margin-bottom: 0.6rem;
     }
 
-    .hero-note {
-      font-family: var(--serif);
-      font-size: 0.95rem;
+    .hero-headline .another-line {
+      display: block;
+      padding-left: 1.25rem;
+    }
+
+    .hero-headline .hero-deck {
+      display: block;
+      font-size: 0.42em;
+      font-weight: 300;
       font-style: italic;
-      color: var(--text-faint);
-      margin-bottom: 3rem;
+      color: rgba(226, 217, 204, 0.7);
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+      padding-left: 0;
+      margin-top: 1.75rem;
+      max-width: 46ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
     }
 
     .hero-scroll {
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin-top: 1rem;
     }
 
     .hero-scroll-line {
@@ -258,10 +263,62 @@
       color: var(--text-faint);
     }
 
+    /* Torn paper scraps scattered on hero */
+    .scrap {
+      position: absolute;
+      background: #f5f0e8;
+      color: #1a1510;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+      line-height: 1.5;
+      padding: 0.75rem 1.1rem 0.9rem;
+      pointer-events: none;
+      z-index: 3;
+      clip-path: polygon(
+        0% 5%, 7% 0%, 20% 3%, 36% 0%, 52% 2%, 68% 0%, 83% 2%, 95% 0%, 100% 4%,
+        98% 30%, 100% 55%, 99% 78%, 100% 96%, 92% 100%,
+        74% 97%, 55% 100%, 37% 98%, 18% 100%, 5% 97%,
+        0% 75%, 2% 52%, 0% 28%
+      );
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.45));
+      max-width: 190px;
+    }
+
+    .scrap-1 {
+      top: 10%;
+      right: clamp(4%, 14vw, 22%);
+      transform: rotate(-5deg);
+    }
+
+    .scrap-2 {
+      top: 36%;
+      right: clamp(2%, 5vw, 8%);
+      transform: rotate(4deg);
+      max-width: 170px;
+    }
+
+    .scrap-3 {
+      bottom: 30%;
+      right: clamp(10%, 20vw, 32%);
+      transform: rotate(-2.5deg);
+      max-width: 210px;
+    }
+
+    @media (max-width: 700px) {
+      .scrap { display: none; }
+      .hero-headline .hero-deck { font-size: 0.48em; }
+    }
+
     /* =====================================================
        WHO THIS IS FOR
     ===================================================== */
-    #who { background: var(--bg-2); }
+    #who {
+      background: var(--bg-2);
+      clip-path: polygon(0 80px, 100% 0, 100% 100%, 0 100%);
+      margin-top: -80px;
+      padding-top: calc(80px + clamp(5rem, 10vw, 9rem));
+    }
 
     .who-heading {
       font-family: var(--serif);
@@ -1259,7 +1316,7 @@
        RESPONSIVE
     ===================================================== */
     @media (max-width: 480px) {
-      .hero-headline { font-size: 2.25rem; }
+      .hero-headline { font-size: 2rem; }
       .pricing-toggle { flex-direction: column; width: 100%; }
     }
   </style>
@@ -1270,35 +1327,43 @@
   HERO
   ===================================================== -->
   <section id="hero">
+
+    <!-- Full-bleed background photo -->
+    <div class="hero-bg" aria-hidden="true">
+      <img src="https://i.ibb.co/3Y5vQ55F/Untitled-design-15.png" alt="" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Torn paper scraps -->
+    <div class="scrap scrap-1" aria-hidden="true">"Finally — someone who just gets it."</div>
+    <div class="scrap scrap-2" aria-hidden="true">No hand-holding. Just momentum.</div>
+    <div class="scrap scrap-3" aria-hidden="true">"This is exactly what I've been looking for."</div>
+
+    <!-- Hero content — sits at the bottom of the full-screen frame -->
     <div class="wrap">
-      <div class="hero-inner">
-        <div class="hero-text">
-          <span class="hero-eyebrow fi">The Twin Brain Retainer</span>
+      <div class="hero-content">
 
-          <h1 class="hero-headline fi fi-d1">
-            You don't need <em>ANOTHER</em> project quote&hellip; <em>ANOTHER</em> designer that will take 6 weeks to get you deliverables&hellip; <em>ANOTHER</em> funnel expert to put together a completely unusable funnel.<br /><br />
-            What you need is someone who actually thinks like <em>YOU</em> do, and moves just as fast.
-          </h1>
+        <span class="hero-eyebrow fi">The Twin Brain Retainer &nbsp;·&nbsp; 6 months</span>
 
-          <p class="hero-sub fi fi-d2">
-            The Twin Brain Retainer is a 6-month partnership where I'm your strategist, your implementer, and your right hand — all in one. We kick off every Monday and build from there.
-          </p>
+        <h1 class="hero-headline fi fi-d1">
+          <span class="another-prefix">You don't need</span>
+          <span class="another-line">ANOTHER project quote.</span>
+          <span class="another-line">ANOTHER 6-week designer.</span>
+          <span class="another-line">ANOTHER unusable funnel.</span>
+          <span class="hero-deck">What you need is someone who actually thinks like you do, and moves just as fast.</span>
+        </h1>
 
-          <div class="fi fi-d3">
-            <a href="#apply" class="btn">Apply now</a>
-          </div>
-
-          <div class="hero-scroll fi fi-d4" style="margin-top:3rem;">
+        <div class="hero-actions fi fi-d2">
+          <a href="#apply" class="btn">Apply now</a>
+          <div class="hero-scroll">
             <div class="hero-scroll-line"></div>
             <span class="hero-scroll-label">Scroll to explore</span>
           </div>
         </div>
 
-        <div class="hero-photo-wrap fi fi-d2">
-          <img src="https://i.ibb.co/1tQKD4q2/24be93e0-8a42-4bf6-9a9d-35bd7d4c117d.png" alt="Allie Fern" />
-        </div>
       </div>
     </div>
+
   </section>
 
   <!-- =====================================================
