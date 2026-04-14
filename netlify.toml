@@ -26,6 +26,11 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[redirects]]
+  from = "/household-name"
+  to = "/household-name.html"
+  status = 200
+
+[[redirects]]
   from = "/quiz-oracle"
   to = "/quiz-oracle.html"
   status = 200
