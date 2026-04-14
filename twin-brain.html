@@ -1580,7 +1580,9 @@
       <p class="apply-sub fi">I read every application myself. If we're a fit, you'll hear from me within 2 business days.</p>
 
       <div id="appFormWrap">
-        <form id="appForm" novalidate>
+        <form id="appForm" name="twin-brain-application" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="twin-brain-application" />
+          <p style="display:none;" aria-hidden="true"><input name="bot-field" /></p>
           <div class="form-grid fi">
 
             <div class="form-field">
@@ -1746,37 +1748,50 @@
     });
 
     /* ── Application form ── */
-    const appForm    = document.getElementById('appForm');
+    const appForm     = document.getElementById('appForm');
     const formConfirm = document.getElementById('formConfirm');
+    const submitBtn   = appForm ? appForm.querySelector('[type="submit"]') : null;
 
     if (appForm) {
-      appForm.addEventListener('submit', e => {
+      appForm.addEventListener('submit', async e => {
         e.preventDefault();
 
-        // Simple required field check
+        // Required field validation
         let valid = true;
         appForm.querySelectorAll('[required]').forEach(field => {
           if (!field.value.trim()) {
             valid = false;
             field.style.borderColor = 'rgba(180, 80, 60, 0.7)';
-            field.addEventListener('input', () => {
-              field.style.borderColor = '';
-            }, { once: true });
+            field.addEventListener('input', () => { field.style.borderColor = ''; }, { once: true });
           }
         });
 
-        if (!valid) return;
-
-        // Check radio
         const billingChosen = appForm.querySelector('input[name="billing"]:checked');
         if (!billingChosen) {
           valid = false;
           appForm.querySelector('.radio-group').style.outline = '1px solid rgba(180, 80, 60, 0.7)';
+          appForm.querySelector('input[name="billing"]').addEventListener('change', () => {
+            appForm.querySelector('.radio-group').style.outline = '';
+          }, { once: true });
         }
 
         if (!valid) return;
 
-        // Show confirmation
+        // Submit to Netlify
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        try {
+          const body = new URLSearchParams(new FormData(appForm)).toString();
+          await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body
+          });
+        } catch (_) {
+          // Proceed to confirmation even on network error — Netlify may have received it
+        }
+
         appForm.style.display = 'none';
         formConfirm.classList.add('visible');
         formConfirm.scrollIntoView({ behavior: 'smooth', block: 'center' });
