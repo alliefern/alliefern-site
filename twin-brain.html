@@ -143,36 +143,10 @@
       top: 0;
       height: 100svh;
       z-index: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      display: grid;
+      grid-template-columns: 1fr 44%;
+      background: var(--bg);
       overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        160deg,
-        rgba(13,13,13,0.08) 0%,
-        rgba(13,13,13,0.38) 40%,
-        rgba(13,13,13,0.82) 72%,
-        rgba(13,13,13,0.97) 100%
-      );
     }
 
     /* All content sections slide over the sticky hero */
@@ -181,10 +155,40 @@
       z-index: 2;
     }
 
-    .hero-content {
+    .hero-text-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(4rem, 8vw, 7rem)
+               clamp(2rem, 4vw, 4rem)
+               clamp(4rem, 8vw, 7rem)
+               clamp(2rem, 7vw, 7rem);
+    }
+
+    .hero-photo-col {
       position: relative;
-      z-index: 2;
-      padding: 0 0 clamp(3.5rem, 7vw, 5.5rem);
+      overflow: hidden;
+    }
+
+    .hero-photo-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Subtle left-edge gold line on the photo column */
+    .hero-photo-col::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      opacity: 0.35;
+      z-index: 1;
     }
 
     .hero-eyebrow {
@@ -200,54 +204,41 @@
 
     .hero-headline {
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 5.5vw, 5.25rem);
+      font-size: clamp(2.25rem, 4vw, 4.5rem);
       font-weight: 400;
       line-height: 1.08;
       letter-spacing: -0.025em;
       color: var(--text);
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
-    .hero-headline .another-prefix {
+    .hero-headline .h-prefix {
       display: block;
       font-family: var(--sans);
-      font-size: 0.5em;
+      font-size: 0.38em;
       font-weight: 300;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--text-mid);
-      margin-bottom: 0.6rem;
+      color: var(--text-faint);
+      margin-bottom: 0.75rem;
     }
 
-    .hero-headline .another-line {
-      display: block;
-      padding-left: 1.25rem;
-    }
-
-    .hero-headline .hero-deck {
-      display: block;
-      font-size: 0.42em;
+    .hero-deck {
+      font-size: clamp(0.9rem, 1.2vw, 1rem);
       font-weight: 300;
       font-style: italic;
-      color: rgba(226, 217, 204, 0.7);
-      line-height: 1.6;
-      letter-spacing: 0.01em;
-      padding-left: 0;
-      margin-top: 1.75rem;
-      max-width: 46ch;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      flex-wrap: wrap;
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-width: 44ch;
+      margin-bottom: 2.5rem;
+      font-family: var(--serif);
     }
 
     .hero-scroll {
       display: flex;
       align-items: center;
       gap: 1rem;
+      margin-top: 2rem;
     }
 
     .hero-scroll-line {
@@ -263,51 +254,24 @@
       color: var(--text-faint);
     }
 
-    /* Torn paper scraps scattered on hero */
-    .scrap {
-      position: absolute;
-      background: #f5f0e8;
-      color: #1a1510;
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(0.7rem, 0.9vw, 0.85rem);
-      line-height: 1.5;
-      padding: 0.75rem 1.1rem 0.9rem;
-      pointer-events: none;
-      z-index: 3;
-      clip-path: polygon(
-        0% 5%, 7% 0%, 20% 3%, 36% 0%, 52% 2%, 68% 0%, 83% 2%, 95% 0%, 100% 4%,
-        98% 30%, 100% 55%, 99% 78%, 100% 96%, 92% 100%,
-        74% 97%, 55% 100%, 37% 98%, 18% 100%, 5% 97%,
-        0% 75%, 2% 52%, 0% 28%
-      );
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.45));
-      max-width: 190px;
-    }
-
-    .scrap-1 {
-      top: 10%;
-      right: clamp(4%, 14vw, 22%);
-      transform: rotate(-5deg);
-    }
-
-    .scrap-2 {
-      top: 36%;
-      right: clamp(2%, 5vw, 8%);
-      transform: rotate(4deg);
-      max-width: 170px;
-    }
-
-    .scrap-3 {
-      bottom: 30%;
-      right: clamp(10%, 20vw, 32%);
-      transform: rotate(-2.5deg);
-      max-width: 210px;
-    }
-
-    @media (max-width: 700px) {
-      .scrap { display: none; }
-      .hero-headline .hero-deck { font-size: 0.48em; }
+    @media (max-width: 780px) {
+      #hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: auto;
+        min-height: 100svh;
+      }
+      .hero-text-col {
+        padding: clamp(5rem, 12vw, 7rem) clamp(1.5rem, 5vw, 3rem) 2rem;
+        order: 1;
+      }
+      .hero-photo-col {
+        order: 2;
+        height: 55vw;
+        min-height: 280px;
+        max-height: 420px;
+      }
+      .hero-photo-col::before { display: none; }
     }
 
     /* =====================================================
@@ -315,9 +279,9 @@
     ===================================================== */
     #who {
       background: var(--bg-2);
-      clip-path: polygon(0 80px, 100% 0, 100% 100%, 0 100%);
-      margin-top: -80px;
-      padding-top: calc(80px + clamp(5rem, 10vw, 9rem));
+      clip-path: polygon(0 64px, 100% 0, 100% 100%, 0 100%);
+      margin-top: -64px;
+      padding-top: calc(64px + clamp(5rem, 10vw, 9rem));
     }
 
     .who-heading {
@@ -1328,40 +1292,34 @@
   ===================================================== -->
   <section id="hero">
 
-    <!-- Full-bleed background photo -->
-    <div class="hero-bg" aria-hidden="true">
-      <img src="https://i.ibb.co/3Y5vQ55F/Untitled-design-15.png" alt="" />
-      <div class="hero-overlay"></div>
+    <!-- Left: text -->
+    <div class="hero-text-col">
+      <span class="hero-eyebrow fi">The Twin Brain Retainer &nbsp;·&nbsp; 6 months</span>
+
+      <h1 class="hero-headline fi fi-d1">
+        <span class="h-prefix">You don't need</span>
+        ANOTHER quote.<br />
+        ANOTHER designer.<br />
+        ANOTHER expert.
+      </h1>
+
+      <p class="hero-deck fi fi-d2">
+        What you need is someone who actually thinks like you do, and moves just as fast.
+      </p>
+
+      <div class="fi fi-d3">
+        <a href="#apply" class="btn">Apply now</a>
+      </div>
+
+      <div class="hero-scroll fi fi-d4">
+        <div class="hero-scroll-line"></div>
+        <span class="hero-scroll-label">Scroll to explore</span>
+      </div>
     </div>
 
-    <!-- Torn paper scraps -->
-    <div class="scrap scrap-1" aria-hidden="true">"Finally — someone who just gets it."</div>
-    <div class="scrap scrap-2" aria-hidden="true">No hand-holding. Just momentum.</div>
-    <div class="scrap scrap-3" aria-hidden="true">"This is exactly what I've been looking for."</div>
-
-    <!-- Hero content — sits at the bottom of the full-screen frame -->
-    <div class="wrap">
-      <div class="hero-content">
-
-        <span class="hero-eyebrow fi">The Twin Brain Retainer &nbsp;·&nbsp; 6 months</span>
-
-        <h1 class="hero-headline fi fi-d1">
-          <span class="another-prefix">You don't need</span>
-          <span class="another-line">ANOTHER project quote.</span>
-          <span class="another-line">ANOTHER 6-week designer.</span>
-          <span class="another-line">ANOTHER unusable funnel.</span>
-          <span class="hero-deck">What you need is someone who actually thinks like you do, and moves just as fast.</span>
-        </h1>
-
-        <div class="hero-actions fi fi-d2">
-          <a href="#apply" class="btn">Apply now</a>
-          <div class="hero-scroll">
-            <div class="hero-scroll-line"></div>
-            <span class="hero-scroll-label">Scroll to explore</span>
-          </div>
-        </div>
-
-      </div>
+    <!-- Right: photo -->
+    <div class="hero-photo-col" aria-hidden="true">
+      <img src="https://i.ibb.co/3Y5vQ55F/Untitled-design-15.png" alt="Allie Fern" />
     </div>
 
   </section>
