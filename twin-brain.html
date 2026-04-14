@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Twin Brain Retainer — Allie Fern</title>
+  <meta name="description" content="A 6-month strategic design and implementation partnership. Your strategist, implementer, and right hand — all in one." />
+  <meta property="og:title" content="The Twin Brain Retainer — Allie Fern" />
+  <meta property="og:description" content="Six months. Every Monday we kick off the week together. Then we get to work." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       TWIN BRAIN RETAINER — Embedded Stylesheet
+    ============================================================ */
+
+    :root {
+      --bg:          #0d0d0d;
+      --bg-2:        #111111;
+      --bg-3:        #161616;
+      --text:        #e2d9cc;
+      --text-mid:    rgba(226, 217, 204, 0.65);
+      --text-faint:  rgba(226, 217, 204, 0.35);
+      --gold:        #b8935a;
+      --gold-lt:     #d4aa72;
+      --gold-pale:   #e8cfa0;
+      --border:      rgba(255, 255, 255, 0.07);
+      --border-gold: rgba(184, 147, 90, 0.3);
+      --rust:        rgba(140, 60, 40, 0.18);
+      --rust-border: rgba(160, 80, 55, 0.45);
+
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans:  'Outfit', system-ui, sans-serif;
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --w: 860px;
+      --w-wide: 1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      animation: pageIn 0.6s ease forwards;
+    }
+
+    @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Fade-in ── */
+    .fi {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+    }
+    .fi.visible { opacity: 1; transform: translateY(0); }
+    .fi-d1 { transition-delay: 0.08s; }
+    .fi-d2 { transition-delay: 0.16s; }
+    .fi-d3 { transition-delay: 0.24s; }
+    .fi-d4 { transition-delay: 0.32s; }
+
+    /* ── Container ── */
+    .wrap {
+      width: 100%;
+      max-width: var(--w);
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 3.5rem);
+    }
+    .wrap-wide {
+      width: 100%;
+      max-width: var(--w-wide);
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 3.5rem);
+    }
+
+    /* ── Overline ── */
+    .overline {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Section rule ── */
+    .section-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 2.5rem;
+      opacity: 0.5;
+    }
+
+    /* ── Shared section padding ── */
+    section { padding: clamp(5rem, 10vw, 9rem) 0; }
+
+    /* ── Button ── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: #0d0d0d;
+      border: 1px solid var(--gold);
+      padding: 0.9rem 2.25rem;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      border-radius: 2px;
+    }
+    .btn:hover { background: transparent; color: var(--gold); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border-gold);
+    }
+    .btn-ghost:hover { background: var(--gold); color: #0d0d0d; border-color: var(--gold); }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(6rem, 12vw, 10rem) 0 clamp(5rem, 8vw, 8rem);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(184, 147, 90, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      display: block;
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      font-weight: 300;
+      color: var(--text-mid);
+      max-width: 58ch;
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-note {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--text-faint);
+      margin-bottom: 3rem;
+    }
+
+    .hero-scroll {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .hero-scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--border-gold);
+    }
+
+    .hero-scroll-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    /* =====================================================
+       WHO THIS IS FOR
+    ===================================================== */
+    #who { background: var(--bg-2); }
+
+    .who-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      margin-bottom: 3.5rem;
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: var(--border);
+    }
+
+    .who-card {
+      background: var(--bg-2);
+      padding: 2.5rem 2.25rem;
+      border-left: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+
+    .who-card:hover { border-color: var(--gold); }
+
+    .who-num {
+      font-family: var(--serif);
+      font-size: 0.75rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .who-card p {
+      font-size: 0.975rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 600px) { .who-grid { grid-template-columns: 1fr; } }
+
+    /* =====================================================
+       THE OFFER
+    ===================================================== */
+    #offer { background: var(--bg); }
+
+    .offer-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+
+    .offer-body {
+      font-size: 0.975rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+      max-width: 66ch;
+      margin-bottom: 3rem;
+    }
+
+    .callout {
+      border: 1px solid var(--border-gold);
+      border-left: 3px solid var(--gold);
+      padding: 2rem 2.25rem;
+      background: rgba(184, 147, 90, 0.04);
+      margin-bottom: 2.5rem;
+      border-radius: 2px;
+    }
+
+    .callout p {
+      font-size: 0.975rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.85;
+    }
+
+    .callout-label {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .aside-block {
+      border: 1px solid var(--border);
+      padding: 2rem 2.25rem;
+      background: var(--bg-3);
+      margin-top: 2.5rem;
+      border-radius: 2px;
+    }
+
+    .aside-block p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+
+    /* Timezone table */
+    .tz-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2.5rem 0;
+      font-size: 0.875rem;
+    }
+
+    .tz-table thead th {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: left;
+      padding: 0.6rem 1.25rem 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tz-table tbody td {
+      padding: 0.875rem 1.25rem 0.875rem 0;
+      font-weight: 300;
+      color: var(--text-mid);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .tz-table tbody tr:last-child td { border-bottom: none; }
+
+    .tz-table tbody td:first-child { color: var(--text); font-weight: 400; }
+
+    /* =====================================================
+       HOW I WORK
+    ===================================================== */
+    #tools { background: var(--bg-2); }
+
+    .tools-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      margin-bottom: 3rem;
+    }
+
+    .tools-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    .tools-sub-label {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .tool-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .tool-table td {
+      padding: 0.75rem 0;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tool-table td:first-child {
+      color: var(--text-faint);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      width: 38%;
+    }
+
+    .tool-table tr:last-child td { border-bottom: none; }
+
+    .platforms-text {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+
+    .hard-no {
+      border: 1px solid var(--rust-border);
+      background: var(--rust);
+      padding: 2rem 2.25rem;
+      border-radius: 2px;
+      margin-top: 0;
+    }
+
+    .hard-no-label {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c47a60;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .hard-no p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+
+    @media (max-width: 680px) { .tools-cols { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    /* =====================================================
+       WHAT'S INCLUDED
+    ===================================================== */
+    #included { background: var(--bg); }
+
+    .included-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      margin-bottom: 3.5rem;
+    }
+
+    .included-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .included-item {
+      display: flex;
+      gap: 2rem;
+      align-items: baseline;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .included-item:first-child { border-top: 1px solid var(--border); }
+
+    .included-marker {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.55rem;
+      opacity: 0.7;
+    }
+
+    .included-item-content { flex: 1; }
+
+    .included-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .included-desc {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* =====================================================
+       PRICING
+    ===================================================== */
+    #pricing { background: var(--bg-2); }
+
+    .pricing-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      margin-bottom: 3rem;
+    }
+
+    /* Toggle */
+    .pricing-toggle {
+      display: inline-flex;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 4px;
+      margin-bottom: 3.5rem;
+      gap: 4px;
+    }
+
+    .toggle-btn {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      padding: 0.6rem 1.4rem;
+      border: none;
+      background: transparent;
+      color: var(--text-mid);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+
+    .toggle-btn.active {
+      background: var(--gold);
+      color: #0d0d0d;
+    }
+
+    /* Pricing grid */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5px;
+      background: var(--border);
+    }
+
+    .pricing-card {
+      background: var(--bg-2);
+      padding: 2.75rem 2.25rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .pricing-card--featured {
+      background: var(--bg-3);
+      outline: 1px solid var(--border-gold);
+      outline-offset: -1px;
+      z-index: 1;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #0d0d0d;
+      font-family: var(--sans);
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      white-space: nowrap;
+    }
+
+    .tier-name {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .tier-sub {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .tier-price {
+      margin-bottom: 0.5rem;
+    }
+
+    .price-amount {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .price-period {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      margin-left: 0.25rem;
+    }
+
+    .price-saving {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--gold-lt);
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    .price-original {
+      font-size: 0.75rem;
+      color: var(--text-faint);
+      text-decoration: line-through;
+      margin-top: 0.2rem;
+      display: block;
+    }
+
+    .tier-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.75rem 0;
+    }
+
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      flex: 1;
+      margin-bottom: 2rem;
+    }
+
+    .tier-feature {
+      display: flex;
+      gap: 0.875rem;
+      align-items: baseline;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .tier-feature::before {
+      content: '—';
+      color: var(--gold);
+      opacity: 0.6;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 860px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+        background: transparent;
+        gap: 1rem;
+      }
+      .pricing-card { outline: 1px solid var(--border); }
+      .pricing-card--featured { outline: 1px solid var(--border-gold); }
+      .popular-badge { top: auto; bottom: 100%; margin-bottom: -1px; transform: translateX(-50%); }
+    }
+
+    /* =====================================================
+       FAQ
+    ===================================================== */
+    #faq { background: var(--bg); }
+
+    .faq-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      margin-bottom: 3.5rem;
+    }
+
+    .faq-list { display: flex; flex-direction: column; }
+
+    .faq-item { border-top: 1px solid var(--border); }
+    .faq-list .faq-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.5;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover { color: var(--gold-lt); }
+
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--border-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      color: var(--gold);
+      transition: transform 0.3s var(--ease), background 0.25s;
+      line-height: 1;
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--gold);
+      color: #0d0d0d;
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease), padding 0.3s;
+    }
+
+    .faq-item.open .faq-answer { max-height: 600px; }
+
+    .faq-answer-inner {
+      padding-bottom: 1.75rem;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+      max-width: 66ch;
+    }
+
+    /* =====================================================
+       CTA CLOSE
+    ===================================================== */
+    #cta-close {
+      background: var(--bg-2);
+      text-align: center;
+      padding: clamp(6rem, 12vw, 11rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta-close::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(184, 147, 90, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-headline {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5.5vw, 4.25rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-headline em {
+      font-style: italic;
+      color: var(--gold-lt);
+    }
+
+    .cta-body {
+      font-size: clamp(0.9rem, 1.3vw, 1rem);
+      font-weight: 300;
+      color: var(--text-mid);
+      max-width: 48ch;
+      margin: 0 auto 2.75rem;
+      line-height: 1.8;
+    }
+
+    .cta-fine {
+      font-size: 0.75rem;
+      font-style: italic;
+      color: var(--text-faint);
+      margin-top: 1.5rem;
+    }
+
+    /* =====================================================
+       APPLICATION FORM
+    ===================================================== */
+    #apply { background: var(--bg); }
+
+    .apply-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .apply-sub {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      margin-bottom: 3.5rem;
+      line-height: 1.7;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-field.full { grid-column: 1 / -1; }
+
+    .form-field label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 0.875rem 1.1rem;
+      outline: none;
+      transition: border-color 0.25s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--border-gold);
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: var(--text-faint);
+    }
+
+    .form-field textarea { resize: vertical; min-height: 110px; }
+
+    .form-field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8935a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
+    .form-field select option { background: #161616; color: var(--text); }
+
+    /* Radio group */
+    .radio-group {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      transition: color 0.2s;
+    }
+
+    .radio-label:hover { color: var(--text); }
+
+    .radio-label input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--gold);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .form-submit {
+      margin-top: 2.5rem;
+    }
+
+    /* Confirmation */
+    .form-confirm {
+      display: none;
+      padding: 3rem;
+      border: 1px solid var(--border-gold);
+      background: rgba(184, 147, 90, 0.04);
+      border-radius: 2px;
+      text-align: center;
+    }
+
+    .form-confirm.visible { display: block; }
+
+    .form-confirm h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .form-confirm p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-mid);
+    }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    .tb-footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+
+    .tb-footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tb-footer-brand {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-mid);
+    }
+
+    .tb-footer-nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .tb-footer-nav a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--text-faint);
+      transition: color 0.2s;
+      text-transform: uppercase;
+    }
+
+    .tb-footer-nav a:hover { color: var(--gold); }
+
+    .tb-footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--text-faint);
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 2.25rem; }
+      .pricing-toggle { flex-direction: column; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================
+  HERO
+  ===================================================== -->
+  <section id="hero">
+    <div class="wrap">
+      <span class="hero-eyebrow fi">The Twin Brain Retainer</span>
+
+      <h1 class="hero-headline fi fi-d1">
+        You don't need another project quote.<br />
+        You need someone who thinks like you<br />
+        and actually does the work.
+      </h1>
+
+      <p class="hero-sub fi fi-d2">
+        The Twin Brain Retainer is a 6-month partnership where I'm your strategist, your implementer, and your right hand — all in one. We kick off every Monday and build from there.
+      </p>
+
+      <p class="hero-note fi fi-d3">"I've been waiting to come back properly. This is how I'm doing it."</p>
+
+      <div class="fi fi-d4">
+        <a href="#apply" class="btn">Apply now</a>
+      </div>
+
+      <div class="hero-scroll fi fi-d4" style="margin-top:3.5rem;">
+        <div class="hero-scroll-line"></div>
+        <span class="hero-scroll-label">Scroll to explore</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+  WHO THIS IS FOR
+  ===================================================== -->
+  <section id="who">
+    <div class="wrap">
+      <span class="overline fi">Who this is for</span>
+      <div class="section-rule fi"></div>
+      <h2 class="who-heading fi">Four things that might be true about you right now.</h2>
+
+      <div class="who-grid fi">
+        <div class="who-card">
+          <span class="who-num">01</span>
+          <p>You have a million ideas and no one to actually execute them with you — not for you. With you.</p>
+        </div>
+        <div class="who-card">
+          <span class="who-num">02</span>
+          <p>You're tired of briefing designers who come back two weeks later with something almost right.</p>
+        </div>
+        <div class="who-card">
+          <span class="who-num">03</span>
+          <p>You're spending your best hours managing people instead of moving the needle.</p>
+        </div>
+        <div class="who-card">
+          <span class="who-num">04</span>
+          <p>You know what you want to build. You just need someone who can keep up and run alongside you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+  THE OFFER — HOW IT WORKS
+  ===================================================== -->
+  <section id="offer">
+    <div class="wrap">
+      <span class="overline fi">The offer</span>
+      <div class="section-rule fi"></div>
+      <h2 class="offer-heading fi">How it works.</h2>
+
+      <p class="offer-body fi">
+        Six months. Every Monday we kick off the week together — a Telegram Power Hour where we map what's moving, what's shipping, and what we're building. Then we get to work. Monday through Friday, I'm in ClickUp, in your platforms, and on Loom showing you what got done.
+      </p>
+
+      <div class="callout fi">
+        <span class="callout-label">Working hours</span>
+        <p>I work noon to 5pm, Monday–Friday (GMT/BST, Scotland). That's intentional, not incidental. If you're in North America, your mornings are my afternoons — your requests land overnight and I'm on them when I start. If you're in the UK or Europe, we're working in real time.</p>
+      </div>
+
+      <table class="tz-table fi">
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>Working hours (local)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Scotland (GMT+1 / BST)</td>
+            <td>12:00 – 17:00</td>
+          </tr>
+          <tr>
+            <td>New York (ET)</td>
+            <td>07:00 – 12:00 / 08:00 – 13:00</td>
+          </tr>
+          <tr>
+            <td>Los Angeles (PT)</td>
+            <td>04:00 – 09:00 / 05:00 – 10:00</td>
+          </tr>
+          <tr>
+            <td>Sydney (AEST)</td>
+            <td>21:00 – 02:00 (next day)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="aside-block fi">
+        <p>I'm one person. That's the point — and also the constraint. You're getting my full attention, not a team of randoms. But that means if copy, design, and funnel builds all land in the same week, some things shift to the following week. We plan together so this doesn't happen by accident. The Monday kickoff exists precisely for this: we prioritise what moves money first.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+  HOW I WORK — TOOLS & PLATFORMS
+  ===================================================== -->
+  <section id="tools">
+    <div class="wrap">
+      <span class="overline fi">How I work</span>
+      <div class="section-rule fi"></div>
+      <h2 class="tools-heading fi">Tools. Platforms. Hard limits.</h2>
+
+      <div class="tools-cols fi">
+        <div>
+          <span class="tools-sub-label">Tools</span>
+          <table class="tool-table">
+            <tbody>
+              <tr><td>Communication</td><td>Telegram</td></tr>
+              <tr><td>Task tracking</td><td>ClickUp</td></tr>
+              <tr><td>Feedback + review</td><td>Loom</td></tr>
+              <tr><td>File storage</td><td>Google Drive</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <span class="tools-sub-label">Platforms I build on</span>
+          <p class="platforms-text">Kajabi &middot; Systeme &middot; GoHighLevel &middot; Squarespace &middot; Showit &middot; Kartra &middot; most all-in-one platforms</p>
+        </div>
+      </div>
+
+      <div class="hard-no fi">
+        <span class="hard-no-label">Hard no</span>
+        <p>I do not build in WordPress. If your site is on WordPress, this isn't the right fit and I'd rather tell you now. Same goes for ActiveCampaign and ActiveHosted. Everything else — ask me.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+  WHAT'S INCLUDED
+  ===================================================== -->
+  <section id="included">
+    <div class="wrap">
+      <span class="overline fi">What's included</span>
+      <div class="section-rule fi"></div>
+      <h2 class="included-heading fi">All tiers. Every engagement.</h2>
+
+      <ul class="included-list">
+        <li class="included-item fi">
+          <div class="included-marker"></div>
+          <div class="included-item-content">
+            <p class="included-title">Monday Telegram Power Hour</p>
+            <p class="included-desc">We align on the week's priorities, surface blockers, set the agenda.</p>
+          </div>
+        </li>
+        <li class="included-item fi fi-d1">
+          <div class="included-marker"></div>
+          <div class="included-item-content">
+            <p class="included-title">Monday–Friday implementation (noon–5pm GMT/BST)</p>
+            <p class="included-desc">Design, copy, builds, funnels.</p>
+          </div>
+        </li>
+        <li class="included-item fi fi-d2">
+          <div class="included-marker"></div>
+          <div class="included-item-content">
+            <p class="included-title">ClickUp project board</p>
+            <p class="included-desc">Full visibility into what's in progress, done, and coming.</p>
+          </div>
+        </li>
+        <li class="included-item fi fi-d3">
+          <div class="included-marker"></div>
+          <div class="included-item-content">
+            <p class="included-title">Loom updates on deliverables</p>
+            <p class="included-desc">You watch, you feedback, we iterate.</p>
+          </div>
+        </li>
+        <li class="included-item fi fi-d4">
+          <div class="included-marker"></div>
+          <div class="included-item-content">
+            <p class="included-title">Google Drive file handoff</p>
+            <p class="included-desc">Organised and yours from day one.</p>
+          </div>
+        </li>
+        <li class="included-item fi">
+          <div class="included-marker"></div>
+          <div class="included-item-content">
+            <p class="included-title">Monthly delivery audit</p>
+            <p class="included-desc">What shipped, what moved the needle, what we're doubling down on.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =====================================================
+  PRICING
+  ===================================================== -->
+  <section id="pricing">
+    <div class="wrap-wide">
+      <span class="overline fi">Pricing</span>
+      <div class="section-rule fi"></div>
+      <h2 class="pricing-heading fi">Three tiers. One commitment.</h2>
+
+      <div class="pricing-toggle fi" role="group" aria-label="Billing period">
+        <button class="toggle-btn active" data-billing="monthly">Pay monthly</button>
+        <button class="toggle-btn" data-billing="full">Pay in full — 30% off</button>
+      </div>
+
+      <div class="pricing-grid fi">
+
+        <!-- CORE TWIN -->
+        <div class="pricing-card">
+          <p class="tier-name">The Core Twin</p>
+          <p class="tier-sub">Strategy + Implementation</p>
+
+          <div class="tier-price">
+            <div data-show="monthly">
+              <span class="price-amount">$2,500</span><span class="price-period">/mo</span>
+              <span class="price-saving" style="visibility:hidden;">—</span>
+            </div>
+            <div data-show="full" style="display:none;">
+              <span class="price-amount">$10,500</span>
+              <span class="price-saving">Save $4,500</span>
+              <span class="price-original">$15,000 at monthly rate</span>
+            </div>
+          </div>
+
+          <div class="tier-divider"></div>
+
+          <ul class="tier-features">
+            <li class="tier-feature">Up to 15 hours/month implementation</li>
+            <li class="tier-feature">Web, copy, funnel, and design work included</li>
+            <li class="tier-feature">2 business day turnaround on standard deliverables</li>
+            <li class="tier-feature">Telegram responses within working hours (noon–5pm GMT/BST)</li>
+            <li class="tier-feature">1 Monday Power Hour per week</li>
+          </ul>
+
+          <a href="#apply" class="btn btn-ghost">Apply for this tier</a>
+        </div>
+
+        <!-- FULL TWIN (FEATURED) -->
+        <div class="pricing-card pricing-card--featured">
+          <div class="popular-badge">Most Popular</div>
+          <p class="tier-name">The Full Twin</p>
+          <p class="tier-sub">The complete partnership</p>
+
+          <div class="tier-price">
+            <div data-show="monthly">
+              <span class="price-amount">$3,800</span><span class="price-period">/mo</span>
+              <span class="price-saving" style="visibility:hidden;">—</span>
+            </div>
+            <div data-show="full" style="display:none;">
+              <span class="price-amount">$15,960</span>
+              <span class="price-saving">Save $6,840</span>
+              <span class="price-original">$22,800 at monthly rate</span>
+            </div>
+          </div>
+
+          <div class="tier-divider"></div>
+
+          <ul class="tier-features">
+            <li class="tier-feature">Up to 25 hours/month implementation</li>
+            <li class="tier-feature">Priority turnaround on urgent deliverables</li>
+            <li class="tier-feature">Monthly strategy deep-dive (90 min video call) — offers, positioning, big picture</li>
+            <li class="tier-feature">Monday Power Hour — Telegram or video, your choice</li>
+          </ul>
+
+          <a href="#apply" class="btn">Apply for this tier</a>
+        </div>
+
+        <!-- EMBEDDED TWIN -->
+        <div class="pricing-card">
+          <p class="tier-name">The Embedded Twin</p>
+          <p class="tier-sub">For the big builds</p>
+
+          <div class="tier-price">
+            <div data-show="monthly">
+              <span class="price-amount">$5,500</span><span class="price-period">/mo</span>
+              <span class="price-saving" style="visibility:hidden;">—</span>
+            </div>
+            <div data-show="full" style="display:none;">
+              <span class="price-amount">$23,100</span>
+              <span class="price-saving">Save $9,900</span>
+              <span class="price-original">$33,000 at monthly rate</span>
+            </div>
+          </div>
+
+          <div class="tier-divider"></div>
+
+          <ul class="tier-features">
+            <li class="tier-feature">Up to 40 hours/month — split across my implementation and VA support (Glasgow-based VA working directly under me)</li>
+            <li class="tier-feature">Full offer architecture, positioning, and marketing strategy</li>
+            <li class="tier-feature">Monday Power Hour — video, structured agenda</li>
+            <li class="tier-feature">Monthly strategy deep-dive (90 min) + quarterly offer and revenue review</li>
+            <li class="tier-feature">One in-person intensive — half day, UK/Scotland/Wales only (ideal for full brand builds or major launches)</li>
+            <li class="tier-feature">Same-day Telegram response during working hours</li>
+          </ul>
+
+          <a href="#apply" class="btn btn-ghost">Apply for this tier</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+  FAQ
+  ===================================================== -->
+  <section id="faq">
+    <div class="wrap">
+      <span class="overline fi">Questions</span>
+      <div class="section-rule fi"></div>
+      <h2 class="faq-heading fi">Honest answers.</h2>
+
+      <div class="faq-list fi">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Why 6 months?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Month one is still context-loading. The magic happens in month three when I know your brand, your clients, and your blind spots better than you consciously do. Short engagements get you a contractor. Six months gets you a Twin.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What if things pile up and nothing ships fast enough?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Honestly — it can happen. I'm one person and I'll always tell you that upfront. The Monday Power Hour exists so we prioritise together, not reactively. Revenue-moving work goes first. Everything else is tracked transparently in ClickUp so you always know where things stand.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            I'm in the US — is the time zone going to be a problem?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Depends how you work. I'm noon to 5pm Scotland time — early morning ET, overnight PT. A lot of US clients find it works brilliantly: you send things end of day, I've actioned them before you're at your desk. Monday Power Hour timing gets confirmed at onboarding based on your zone.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            You start in July — why book now?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Because I'm only taking 2–3 clients and I'm telling my warm list first. Your deposit locks the spot. We hit July 1st with a proper onboarding session and nothing wasted.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What if it's not working?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">30-day check-in built in. If we're not a fit, we part cleanly and I refund unused months. Not interested in keeping your money if I'm not earning it.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            My site is on WordPress.
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">Then I'm not your person — and I'd genuinely rather tell you now. I build on Kajabi, Squarespace, Showit, GHL, Systeme, and Kartra. Open to migrating? We can talk.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+  CTA CLOSE
+  ===================================================== -->
+  <section id="cta-close">
+    <div class="wrap">
+      <div style="text-align:center;">
+        <span class="overline fi" style="justify-content:center;display:block;">Limited availability</span>
+        <h2 class="cta-headline fi">
+          2–3 spots. July 1st start.<br />
+          <em>Book before they're gone.</em>
+        </h2>
+        <p class="cta-body fi">Deposit secures your spot. Onboarding starts July 1st. We do this properly from day one.</p>
+        <div class="fi">
+          <a href="#apply" class="btn">Apply now</a>
+          <p class="cta-fine">Spots are limited. I review every application personally.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+  APPLICATION FORM
+  ===================================================== -->
+  <section id="apply">
+    <div class="wrap">
+      <span class="overline fi">Apply</span>
+      <div class="section-rule fi"></div>
+      <h2 class="apply-heading fi">Tell me about your world.</h2>
+      <p class="apply-sub fi">I read every application myself. If we're a fit, you'll hear from me within 2 business days.</p>
+
+      <div id="appFormWrap">
+        <form id="appForm" novalidate>
+          <div class="form-grid fi">
+
+            <div class="form-field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" required placeholder="Jane Smith" />
+            </div>
+
+            <div class="form-field">
+              <label for="email">Your email</label>
+              <input type="email" id="email" name="email" required placeholder="jane@example.com" />
+            </div>
+
+            <div class="form-field full">
+              <label for="website">Your website URL</label>
+              <input type="url" id="website" name="website" placeholder="https://yourwebsite.com" />
+            </div>
+
+            <div class="form-field">
+              <label for="platform">What platform is your site built on?</label>
+              <select id="platform" name="platform" required>
+                <option value="" disabled selected>Select a platform</option>
+                <option value="kajabi">Kajabi</option>
+                <option value="systeme">Systeme</option>
+                <option value="gohighlevel">GoHighLevel</option>
+                <option value="squarespace">Squarespace</option>
+                <option value="showit">Showit</option>
+                <option value="kartra">Kartra</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="tier">Which tier are you interested in?</label>
+              <select id="tier" name="tier" required>
+                <option value="" disabled selected>Select a tier</option>
+                <option value="core">Core Twin — $2,500/mo</option>
+                <option value="full">Full Twin — $3,800/mo</option>
+                <option value="embedded">Embedded Twin — $5,500/mo</option>
+              </select>
+            </div>
+
+            <div class="form-field full">
+              <label>Monthly or pay in full?</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="billing" value="monthly" required /> Monthly
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="billing" value="full" /> Pay in full (30% off)
+                </label>
+              </div>
+            </div>
+
+            <div class="form-field full">
+              <label for="building">What are you building or launching in the next 6 months?</label>
+              <textarea id="building" name="building" required placeholder="Tell me what's in motion..."></textarea>
+            </div>
+
+            <div class="form-field full">
+              <label for="blocker">What's the single biggest thing you need to move forward?</label>
+              <textarea id="blocker" name="blocker" required placeholder="The one thing that would change everything..."></textarea>
+            </div>
+
+            <div class="form-field full">
+              <label for="referral">How did you find me?</label>
+              <input type="text" id="referral" name="referral" placeholder="Instagram, referral, podcast..." />
+            </div>
+
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn">Send my application</button>
+          </div>
+        </form>
+
+        <div class="form-confirm" id="formConfirm">
+          <h3>Got it.</h3>
+          <p>I'll be in touch within 2 business days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+  FOOTER
+  ===================================================== -->
+  <footer class="tb-footer">
+    <div class="wrap tb-footer-inner">
+      <span class="tb-footer-brand">The Twin Brain Retainer — by Allie Fern</span>
+      <nav class="tb-footer-nav">
+        <a href="/">alliefern.com</a>
+        <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+      <span class="tb-footer-copy">&copy; 2026 Allie Fern</span>
+    </div>
+  </footer>
+
+  <script>
+    /* ============================================================
+       TWIN BRAIN RETAINER — Scripts
+    ============================================================ */
+
+    /* ── Scroll fade-in (IntersectionObserver) ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fi').forEach(el => {
+      // Immediately show hero elements
+      if (el.closest('#hero')) {
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
+    });
+
+    /* ── Pricing toggle ── */
+    const toggleBtns  = document.querySelectorAll('.toggle-btn');
+    const monthlyEls  = document.querySelectorAll('[data-show="monthly"]');
+    const fullEls     = document.querySelectorAll('[data-show="full"]');
+
+    toggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const billing = btn.dataset.billing;
+
+        toggleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        if (billing === 'monthly') {
+          monthlyEls.forEach(el => el.style.display = '');
+          fullEls.forEach(el    => el.style.display = 'none');
+        } else {
+          monthlyEls.forEach(el => el.style.display = 'none');
+          fullEls.forEach(el    => el.style.display = '');
+        }
+      });
+    });
+
+    /* ── FAQ accordion ── */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item     = btn.closest('.faq-item');
+        const isOpen   = item.classList.contains('open');
+        const icon     = btn.querySelector('.faq-icon');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* ── Application form ── */
+    const appForm    = document.getElementById('appForm');
+    const formConfirm = document.getElementById('formConfirm');
+
+    if (appForm) {
+      appForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        // Simple required field check
+        let valid = true;
+        appForm.querySelectorAll('[required]').forEach(field => {
+          if (!field.value.trim()) {
+            valid = false;
+            field.style.borderColor = 'rgba(180, 80, 60, 0.7)';
+            field.addEventListener('input', () => {
+              field.style.borderColor = '';
+            }, { once: true });
+          }
+        });
+
+        if (!valid) return;
+
+        // Check radio
+        const billingChosen = appForm.querySelector('input[name="billing"]:checked');
+        if (!billingChosen) {
+          valid = false;
+          appForm.querySelector('.radio-group').style.outline = '1px solid rgba(180, 80, 60, 0.7)';
+        }
+
+        if (!valid) return;
+
+        // Show confirmation
+        appForm.style.display = 'none';
+        formConfirm.classList.add('visible');
+        formConfirm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    }
+
+    /* ── Smooth anchor scroll ── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
