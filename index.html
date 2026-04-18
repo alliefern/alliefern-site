@@ -1,354 +1,958 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Allie Fern — Design & Strategy for High-Ticket Women</title>
-  <meta name="description" content="Design & Strategy for High-Ticket Women Ready to Bridge the Gap From $20k+ Months into $50k and Beyond. Revenue-focused branding that actually converts." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fern Industries — Embedded Creative Direction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #040404;
+      color: #fcf8f5;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Allie Fern — Design & Strategy for High-Ticket Women" />
-  <meta property="og:description" content="I help high-ticket women build brands that close. Design, strategy, and implementation that moves the needle." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://alliefern.com" />
-  <meta property="og:image" content="https://alliefern.com/assets/og-image.jpg" />
+    /* ── Type helpers ── */
+    .eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+    }
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet" />
+    /* ── Fade-up ── */
+    .fu {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fu.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-  <link rel="stylesheet" href="css/styles.css?v=4" />
+    /* ════════════════════════════════
+       NAV
+    ════════════════════════════════ */
+    #nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s ease;
+    }
+    #nav.scrolled { background: #040404; }
 
-  <!-- Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Allie Fern",
-    "description": "Design & Strategy for High-Ticket Women",
-    "url": "https://alliefern.com",
-    "serviceType": ["Brand Design", "Strategy", "Website Makeover", "Podcast Branding"]
-  }
-  </script>
+    .nav-logo img {
+      height: 34px;
+      width: auto;
+    }
+
+    .nav-cta {
+      display: inline-block;
+      border: 1px solid #fcf8f5;
+      color: #fcf8f5;
+      background: transparent;
+      padding: 10px 26px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .nav-cta:hover {
+      background: #fcf8f5;
+      color: #040404;
+    }
+
+    /* ════════════════════════════════
+       MARQUEE BAR
+    ════════════════════════════════ */
+    .marquee-bar {
+      background: #040404;
+      padding: 13px 0;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(154,136,50,0.18);
+      margin-top: 74px;
+    }
+
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 32s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    .marquee-set {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .marquee-item {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fcf8f5;
+      padding: 0 20px;
+    }
+    .marquee-sep {
+      color: #9a8832;
+      font-size: 13px;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ════════════════════════════════
+       HERO
+    ════════════════════════════════ */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    .hero-photo {
+      background: #0b0b0b;
+      border-right: 1px solid rgba(252,248,245,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .hero-content {
+      background: #040404;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 120px 80px 80px;
+    }
+
+    .hero-eyebrow {
+      color: #9a8832;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 5vw, 72px);
+      line-height: 1.1;
+      color: #fcf8f5;
+      margin-bottom: 28px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: #ffc1b4;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(252,248,245,0.65);
+      max-width: 460px;
+      margin-bottom: 28px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .pill {
+      border: 1px solid rgba(252,248,245,0.18);
+      color: rgba(252,248,245,0.45);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .avail-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #9a8832;
+      flex-shrink: 0;
+      animation: dot-pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes dot-pulse {
+      0%,100% { opacity:1; transform:scale(1); box-shadow:0 0 0 0 rgba(154,136,50,0.45); }
+      50%      { opacity:.7; transform:scale(1.15); box-shadow:0 0 0 6px rgba(154,136,50,0); }
+    }
+    .avail-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #9a8832;
+    }
+
+    /* ── Buttons ── */
+    .btn-red {
+      display: inline-block;
+      background: #760000;
+      color: #fcf8f5;
+      padding: 15px 36px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      align-self: flex-start;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .btn-red:hover { background: #fcf8f5; color: #040404; }
+
+    .btn-cream-on-red {
+      display: inline-block;
+      background: #fcf8f5;
+      color: #760000;
+      padding: 15px 36px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .btn-cream-on-red:hover { background: #040404; color: #fcf8f5; }
+
+    /* ── Photo placeholder ── */
+    .ph {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 48px;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+    }
+    .ph svg { opacity: 0.2; }
+    .ph-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(252,248,245,0.3);
+    }
+    .ph-dim {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      color: rgba(252,248,245,0.15);
+      letter-spacing: 0.1em;
+    }
+    .ph.light svg { opacity: 0.12; }
+    .ph.light .ph-label { color: rgba(4,4,4,0.3); }
+    .ph.light .ph-dim   { color: rgba(4,4,4,0.18); }
+
+    /* ════════════════════════════════
+       STATEMENT BAND
+    ════════════════════════════════ */
+    .statement {
+      background: #760000;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 100px 80px;
+      gap: 80px;
+      align-items: center;
+    }
+    .statement h2 {
+      font-size: clamp(34px, 3.8vw, 54px);
+      line-height: 1.15;
+      color: #fcf8f5;
+    }
+    .statement-body p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: rgba(252,248,245,0.68);
+      margin-bottom: 20px;
+    }
+    .statement-body p:last-child { margin-bottom: 0; }
+
+    /* ════════════════════════════════
+       HOW IT WORKS
+    ════════════════════════════════ */
+    .how {
+      background: #fcf8f5;
+      padding: 100px 56px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header .eyebrow { color: #9a8832; margin-bottom: 14px; }
+    .section-header h2 {
+      font-size: clamp(34px, 4vw, 54px);
+      color: #040404;
+      line-height: 1.15;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #040404;
+      padding: 56px 44px;
+      position: relative;
+      overflow: hidden;
+      border-top: 2px solid transparent;
+      transition: border-color 0.35s ease;
+    }
+    .card:hover { border-top-color: #9a8832; }
+
+    .card-num {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 110px;
+      line-height: 1;
+      color: rgba(252,248,245,0.045);
+      position: absolute;
+      top: 16px; left: 36px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .card h3 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.25;
+      color: #fcf8f5;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+    .card p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(252,248,245,0.6);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ════════════════════════════════
+       WHAT YOU GET
+    ════════════════════════════════ */
+    .what {
+      background: #040404;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 100px 80px;
+      gap: 80px;
+      align-items: center;
+    }
+    .what .eyebrow { color: #9a8832; margin-bottom: 22px; }
+    .what h2 {
+      font-size: clamp(34px, 3.8vw, 52px);
+      color: #fcf8f5;
+      line-height: 1.15;
+      margin-bottom: 26px;
+    }
+    .what-intro {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(252,248,245,0.65);
+      margin-bottom: 36px;
+    }
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(252,248,245,0.75);
+    }
+    .feature-list li::before {
+      content: '✦';
+      color: #9a8832;
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .what-photo-wrap {
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 480px;
+    }
+
+    /* ════════════════════════════════
+       PRICING
+    ════════════════════════════════ */
+    .pricing {
+      background: #fcf8f5;
+      padding: 100px 56px;
+    }
+    .pricing-hdr {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .pricing-hdr .eyebrow { color: #9a8832; margin-bottom: 14px; }
+    .pricing-hdr h2 {
+      font-size: clamp(40px, 5vw, 64px);
+      color: #040404;
+      line-height: 1.1;
+      margin-bottom: 22px;
+    }
+    .pricing-subhead {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(4,4,4,0.55);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto 48px;
+    }
+
+    .p-card {
+      padding: 48px;
+    }
+    .p-card.monthly { background: #040404; }
+    .p-card.pif     { background: #760000; }
+
+    .p-badge {
+      display: inline-block;
+      border: 1px solid rgba(252,248,245,0.22);
+      color: rgba(252,248,245,0.65);
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .p-title {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 36px;
+      color: #fcf8f5;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .p-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(252,248,245,0.58);
+      margin-bottom: 28px;
+    }
+    .p-price {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 52px;
+      color: #fcf8f5;
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+    .p-sub {
+      font-size: 11px;
+      font-family: 'Poppins', sans-serif;
+      color: rgba(252,248,245,0.45);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .p-savings {
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #ffc1b4;
+      letter-spacing: 0.04em;
+      margin-bottom: 32px;
+    }
+    .p-spacer { height: 38px; }
+
+    .p-btn-monthly {
+      display: block;
+      background: #fcf8f5;
+      color: #040404;
+      padding: 14px 32px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .p-btn-monthly:hover { background: #9a8832; color: #fcf8f5; }
+
+    .p-btn-pif {
+      display: block;
+      background: #fcf8f5;
+      color: #760000;
+      padding: 14px 32px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .p-btn-pif:hover { background: #040404; color: #fcf8f5; }
+
+    .pricing-note {
+      text-align: center;
+      font-size: 14px;
+      color: rgba(4,4,4,0.5);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ════════════════════════════════
+       URGENCY BAND
+    ════════════════════════════════ */
+    .urgency {
+      background: #760000;
+      padding: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 60px;
+    }
+    .urgency-left h3 {
+      font-size: clamp(30px, 3.2vw, 46px);
+      line-height: 1.2;
+      color: #fcf8f5;
+      margin-bottom: 14px;
+    }
+    .urgency-sub {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(252,248,245,0.65);
+      max-width: 480px;
+    }
+
+    /* ════════════════════════════════
+       ABOUT
+    ════════════════════════════════ */
+    .about {
+      background: #fcf8f5;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 100px 80px;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+    .about-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      width: calc(100% - 24px);
+      height: calc(100% - 24px);
+      border: 2px solid #9a8832;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .about-photo {
+      background: #e5e1de;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 520px;
+      position: relative;
+      z-index: 1;
+    }
+    .about .eyebrow { color: #9a8832; margin-bottom: 18px; }
+    .about h2 {
+      font-size: clamp(30px, 3.2vw, 46px);
+      color: #040404;
+      line-height: 1.2;
+      margin-bottom: 28px;
+    }
+    .about p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: rgba(4,4,4,0.68);
+      margin-bottom: 18px;
+    }
+    .about p:last-of-type { margin-bottom: 32px; }
+
+    .btn-red-about {
+      display: inline-block;
+      background: #760000;
+      color: #fcf8f5;
+      padding: 14px 32px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .btn-red-about:hover { background: #fcf8f5; color: #040404; }
+
+    /* ════════════════════════════════
+       FOOTER
+    ════════════════════════════════ */
+    footer {
+      background: #040404;
+      padding: 40px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(252,248,245,0.06);
+    }
+    .footer-logo img {
+      height: 28px;
+      width: auto;
+      opacity: 0.6;
+      filter: invert(1);
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(252,248,245,0.35);
+      letter-spacing: 0.06em;
+    }
+
+    /* ════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════ */
+    @media (max-width: 768px) {
+      #nav { padding: 16px 24px; }
+
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { display: none; }
+      .hero-content { padding: 110px 28px 64px; }
+      .hero h1 { font-size: 40px; }
+
+      .statement { grid-template-columns: 1fr; padding: 64px 28px; gap: 40px; }
+
+      .how { padding: 64px 20px; }
+      .cards { grid-template-columns: 1fr; }
+
+      .what { grid-template-columns: 1fr; padding: 64px 28px; gap: 40px; }
+      .what-photo-wrap { display: none; }
+
+      .pricing { padding: 64px 20px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .p-card { padding: 36px 28px; }
+
+      .urgency { flex-direction: column; padding: 64px 28px; align-items: flex-start; gap: 32px; }
+
+      .about { grid-template-columns: 1fr; padding: 64px 28px; gap: 40px; }
+      .about-photo-wrap { display: none; }
+
+      footer { padding: 32px 24px; flex-direction: column; gap: 14px; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
-  <!-- ===================== NAV ===================== -->
-  <nav class="nav" id="nav">
-    <a href="#" class="nav-logo" aria-label="Allie Fern Home">
-      <span class="nav-logo-name">ALLIE FERN</span>
-      <span class="nav-logo-sub">DESIGN &amp; STRATEGY</span>
+  <!-- ═══ NAV ═══ -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">
+      <img src="https://i.ibb.co/Q3Hm500L/Artboard-2.png" alt="Fern Industries">
     </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#services" class="nav-link">Services</a></li>
-      <li><a href="#work" class="nav-link">Work</a></li>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="nav-cta btn-primary">Apply Now</a>
-    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
+    <a href="#pricing" class="nav-cta">Reserve Your Spot →</a>
   </nav>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
-    <ul>
-      <li><a href="#services" class="mobile-link">Services</a></li>
-      <li><a href="#work" class="mobile-link">Work</a></li>
-      <li><a href="#about" class="mobile-link">About</a></li>
-      <li><a href="pricing.html" class="mobile-link">Pricing</a></li>
-      <li><a href="quiz-oracle.html" class="mobile-link">Quiz Oracle</a></li>
-      <li><a href="#contact" class="mobile-link">Contact</a></li>
-    </ul>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary mobile-cta">Apply Now</a>
-  </div>
-
-  <!-- ===================== HERO ===================== -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <img src="https://i.ibb.co/1tQKD4q2/24be93e0-8a42-4bf6-9a9d-35bd7d4c117d.png" alt="" aria-hidden="true" class="hero-bg-img" />
-      <div class="hero-overlay"></div>
-    </div>
-
-    <div class="hero-inner">
-      <p class="hero-script reveal-line">Design &amp; Strategy for High-Ticket Women</p>
-      <h1 class="hero-headline">
-        <span class="reveal-word">Your brand is</span>
-        <span class="reveal-word"><em>making you hella money.</em></span>
-      </h1>
-      <p class="hero-sub reveal-block">
-        But you know deep down that it could be making <em>wayyyy</em> more. And currently, you sit at the intersection of knowing that, and not really knowing HOW to implement changes that will shore up that gap.
-      </p>
-      <div class="hero-cta reveal-block">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-light btn-magnetic">
-          Literally sign me up right tf now &rarr;
-        </a>
-      </div>
-    </div>
-
-    <div class="hero-scroll-indicator">
-      <span class="scroll-line"></span>
-      <span class="scroll-label">SCROLL</span>
-    </div>
-  </section>
-
-  <!-- ===================== MARQUEE ===================== -->
-  <div class="marquee-strip" aria-hidden="true">
+  <!-- ═══ MARQUEE BAR ═══ -->
+  <div class="marquee-bar" aria-hidden="true">
     <div class="marquee-track">
-      <span>Design that converts</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Strategy that scales</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Brands that close</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Design that converts</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Strategy that scales</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Brands that close</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Design that converts</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Strategy that scales</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Brands that close</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Design that converts</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Strategy that scales</span>
-      <span class="marquee-dot">&middot;</span>
-      <span>Brands that close</span>
-      <span class="marquee-dot">&middot;</span>
+      <span class="marquee-set">
+        <span class="marquee-item">Embedded Creative Director</span>
+        <span class="marquee-sep">✦</span>
+        <span class="marquee-item">Same-Day Execution</span>
+        <span class="marquee-sep">✦</span>
+        <span class="marquee-item">Design · Copy · Tech · Strategy</span>
+        <span class="marquee-sep">✦</span>
+        <span class="marquee-item">Two Clients. Maximum.</span>
+        <span class="marquee-sep">✦</span>
+        <span class="marquee-item">Starting July 2025</span>
+        <span class="marquee-sep">✦</span>
+        <span class="marquee-item">Reserve Your Spot Now</span>
+        <span class="marquee-sep">✦</span>
+      </span>
+      <span class="marquee-set" aria-hidden="true">
+        <span class="marquee-item">Embedded Creative Director</span>
+        <span class="marquee-sep">✦</span>
+        <span class="marquee-item">Same-Day Execution</span>
+        <span class="marquee-sep">✦</span>
+        <span class="marquee-item">Design · Copy · Tech · Strategy</span>
+        <span class="marquee-sep">✦</span>
+        <span class="marquee-item">Two Clients. Maximum.</span>
+        <span class="marquee-sep">✦</span>
+        <span class="marquee-item">Starting July 2025</span>
+        <span class="marquee-sep">✦</span>
+        <span class="marquee-item">Reserve Your Spot Now</span>
+        <span class="marquee-sep">✦</span>
+      </span>
     </div>
   </div>
 
-  <!-- ===================== STATEMENT ===================== -->
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-photo fu">
+      <div class="ph">
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="8" width="56" height="48" rx="2" stroke="#fcf8f5" stroke-width="1.5"/>
+          <circle cx="22" cy="26" r="7" stroke="#fcf8f5" stroke-width="1.5"/>
+          <path d="M4 44L18 30L28 42L38 32L60 52" stroke="#fcf8f5" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        <span class="ph-label">Portrait Photo</span>
+        <span class="ph-dim">900 × 1200px</span>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <p class="eyebrow hero-eyebrow fu">Fern Industries — Creative Direction</p>
+      <h1 class="fu">
+        Your brand doesn't stop<br>
+        when you walk on stage.<br>
+        (Lucky you have <em>me.</em>)
+      </h1>
+      <p class="hero-sub fu">Design. Copy. Tech. Strategy. All of it, daily, from someone who already knows your brand better than your last three contractors combined.</p>
+      <div class="pills fu">
+        <span class="pill">Design</span>
+        <span class="pill">Copywriting</span>
+        <span class="pill">Tech &amp; Automations</span>
+        <span class="pill">Strategy</span>
+      </div>
+      <div class="availability fu">
+        <div class="avail-dot"></div>
+        <span class="avail-text">1 Spot Available — July 2026</span>
+      </div>
+      <a href="#pricing" class="btn-red fu">YEP, NEED THIS →</a>
+    </div>
+  </section>
+
+  <!-- ═══ STATEMENT BAND ═══ -->
   <section class="statement">
-    <div class="container">
-      <div class="statement-box reveal-block">
-        <span class="statement-script">the honest truth...</span>
-        <h2 class="statement-heading">
-          What I do isn&rsquo;t &ldquo;graphic design&rdquo;.<br />
-          It&rsquo;s <em>REVENUE INCREASE.</em>
-        </h2>
-        <p class="statement-body">Every asset I build, every brand decision I make, every layout I touch&hellip; it&rsquo;s all in service of one thing: making your business more money than it was making before I showed up.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-ghost-light btn-magnetic">Get a taste of working together &rarr;</a>
+    <div class="fu">
+      <h2>You've burned through designers.<br>They didn't get it, but I will.</h2>
+    </div>
+    <div class="statement-body fu">
+      <p>High-ticket coaches and empire builders don't need someone to manage. They need someone who's already inside the vision — and moves fast enough to actually keep up.</p>
+      <p>This isn't a project. It's not a retainer in the "send deliverables and invoice" sense. It's an embedded creative partnership — design, copy, tech, and strategy held by one person, available daily, while you're on stage raising your kids and closing six-figure deals.</p>
+      <p>You focus on the empire. I'll make sure it looks like one.</p>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="how">
+    <div class="section-header">
+      <p class="eyebrow fu">How It Works</p>
+      <h2 class="fu">Built different. On purpose.</h2>
+    </div>
+    <div class="cards">
+      <div class="card fu">
+        <span class="card-num" aria-hidden="true">01</span>
+        <h3>Daily access.<br>Actual access.</h3>
+        <p>12–4pm, Monday–Friday, that's yours. We vision, we build, we ship — same day. No queue. No "I'll get that back to you by end of week." End of conversation.</p>
+      </div>
+      <div class="card fu">
+        <span class="card-num" aria-hidden="true">02</span>
+        <h3>I bring a designer.</h3>
+        <p>A junior designer works alongside me so we can build volume — templates, foundational assets, the stuff that usually falls through the cracks — without touching your strategy time.</p>
+      </div>
+      <div class="card fu">
+        <span class="card-num" aria-hidden="true">03</span>
+        <h3>Two clients.<br>That's it.</h3>
+        <p>Not ten. Not five. Two. That's not a limitation — that's literally the product. You get all of me, not a fraction managed by an account exec you've never met.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===================== SERVICES ===================== -->
-  <section class="services" id="services">
-    <div class="services-intro container">
-      <p class="section-overline reveal-line">WHAT WE DO</p>
-      <h2 class="section-heading reveal-heading">
-        Ready to build a brand<br /><em>that actually closes?</em>
-      </h2>
+  <!-- ═══ WHAT YOU GET ═══ -->
+  <section class="what">
+    <div>
+      <p class="eyebrow fu">What's Included</p>
+      <h2 class="fu">Everything your brand needs.<br>Nothing you have to babysit.</h2>
+      <p class="what-intro fu">Design, copy, tech, automations, strategy — held by one person who has your brand memorised. Possibly better than you do. (She said what she said.)</p>
+      <ul class="feature-list">
+        <li class="fu">Daily creative access, 12–4pm — vision sessions + same-day execution, no exceptions</li>
+        <li class="fu">Full design suite — web, sales pages, social, events, graphics, print</li>
+        <li class="fu">Copywriting — sales pages, emails, landing pages, bios, campaign copy</li>
+        <li class="fu">Tech &amp; automations — Kajabi, GHL, Systeme, Squarespace, integrations</li>
+        <li class="fu">Junior designer support — templates, foundations, volume builds</li>
+        <li class="fu">Brand continuity — we hold your visual identity so you never have to brief anyone from scratch again</li>
+      </ul>
     </div>
-
-    <div class="services-grid container">
-
-      <div class="service-card reveal-card">
-        <div class="service-card-inner">
-          <div class="service-tag">01</div>
-          <h3 class="service-name">Iconic Woman</h3>
-          <div class="service-price">$7,000</div>
-          <p class="service-desc">A longterm private design and strategy partnership for the woman whose business has outgrown her brand. I embed into your world, work alongside you weekly, and build everything that impacts how you sell&hellip; brand, assets, backend, creative direction. All of it.</p>
-          <p class="service-note">One spot available to start in April 2026.</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">Apply Now &rarr;</a>
-        </div>
-      </div>
-
-      <div class="service-card service-card--featured reveal-card">
-        <div class="service-card-inner">
-          <div class="service-tag">02</div>
-          <h3 class="service-name">Website Makeover</h3>
-          <div class="service-price">$3,000</div>
-          <p class="service-desc">Your website isn&rsquo;t broken. It&rsquo;s just not converting. I take what you have and rebuild it into a luxury-level, high-converting asset that actually closes. Squarespace, Kajabi, GHL&hellip; whatever you&rsquo;re on, I&rsquo;ll make it work harder.</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">Apply Now &rarr;</a>
-        </div>
-      </div>
-
-      <div class="service-card reveal-card">
-        <div class="service-card-inner">
-          <div class="service-tag">03</div>
-          <h3 class="service-name">Podcast Makeover</h3>
-          <div class="service-price">$1,500</div>
-          <p class="service-desc">Your podcast is a sales tool that isn&rsquo;t dressed like one yet. I take your existing presence and turn it into a brand-aligned asset that builds authority and converts listeners into clients.</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic">Apply Now &rarr;</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="services-footer container reveal-block">
-      <a href="pricing.html" class="btn-ghost btn-magnetic">See the full pricing list &rarr;</a>
-    </div>
-  </section>
-
-  <!-- ===================== TESTIMONIALS ===================== -->
-  <section class="testimonials" id="testimonials">
-    <div class="container">
-      <p class="section-overline reveal-line">WHAT THEY&rsquo;RE SAYING</p>
-      <h2 class="section-heading reveal-heading">Don&rsquo;t take my word for it.</h2>
-      <div class="senja-wrapper reveal-block">
-        <script src="https://widget.senja.io/widget/84bfc37e-9c2c-4a51-b90a-b4b629de8a9f/platform.js" type="text/javascript" async></script>
-        <div class="senja-embed" data-id="84bfc37e-9c2c-4a51-b90a-b4b629de8a9f" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+    <div class="what-photo-wrap fu">
+      <div class="ph">
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="8" width="56" height="48" rx="2" stroke="#fcf8f5" stroke-width="1.5"/>
+          <circle cx="22" cy="26" r="7" stroke="#fcf8f5" stroke-width="1.5"/>
+          <path d="M4 44L18 30L28 42L38 32L60 52" stroke="#fcf8f5" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        <span class="ph-label">Lifestyle / Work Photo</span>
+        <span class="ph-dim">800 × 1067px</span>
       </div>
     </div>
   </section>
 
-  <!-- ===================== WORK ===================== -->
-  <section class="work" id="work">
-    <div class="work-intro container">
-      <p class="section-overline reveal-line">RECENT WORK</p>
-      <h2 class="section-heading reveal-heading">The proof is in the portfolio.</h2>
-      <p class="section-sub reveal-block">I partner with women who are done letting their brand lag behind their vision. These are some recent collaborations.</p>
+  <!-- ═══ PRICING ═══ -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-hdr">
+      <p class="eyebrow fu">Pricing</p>
+      <h2 class="fu">Two spots.<br>Both starting July 1.</h2>
+      <p class="pricing-subhead fu">I'm on mat leave May–June. Reserve now — your spot is locked. First come, first served when I'm back. (These will go fast. Not a marketing tactic. Just true.)</p>
     </div>
 
-    <div class="work-grid container">
-      <div class="work-item work-item--wide reveal-card">
-        <img src="https://i.ibb.co/C3bwyZyW/a8b2072-bc40-a00f-6ac5-1e1cde60516d-Lisa-Duncan-Day-of-Design-4.png" alt="Lisa Duncan Day of Design" class="work-img" loading="lazy" />
+    <div class="pricing-grid">
+      <div class="p-card monthly fu">
+        <span class="p-badge">Monthly Retainer</span>
+        <h3 class="p-title">Month-to-Month</h3>
+        <p class="p-desc">Reserve your July spot with the first month's payment. Renews monthly. Cancel with 30 days notice.</p>
+        <div class="p-price">$5,500</div>
+        <p class="p-sub">/ per month</p>
+        <p class="p-sub">First month payment reserves your spot</p>
+        <div class="p-spacer"></div>
+        <a href="#" class="p-btn-monthly">Reserve My Spot →</a>
       </div>
-      <div class="work-item work-item--tall reveal-card">
-        <img src="https://i.ibb.co/9H1rL815/1680b4d-523-8614-3bfb-7770d4faea2f-Lipstick-Mockup.png" alt="Lipstick Mockup Brand Design" class="work-img" loading="lazy" />
-      </div>
-      <div class="work-item reveal-card">
-        <img src="https://i.ibb.co/WpYB8tzb/e406d1-32b1-1d3a-e627-2bc85fbe4171-HER-NEXT-LEVEL-One-Page-Brand-Guide.png" alt="Her Next Level Brand Guide" class="work-img" loading="lazy" />
-      </div>
-      <div class="work-item reveal-card">
-        <img src="https://i.ibb.co/1Gyq6tNH/ade0bea-b0d8-cc24-cb-a70e24f4c2df-sticker-mockups-mikayla.png" alt="Sticker Mockups Mikayla" class="work-img" loading="lazy" />
-      </div>
-      <div class="work-item reveal-card">
-        <img src="https://i.ibb.co/gbq0KG1b/4bd62c8-82d7-8d5-5ac-d688c3b12162-style-matrix-mockup-3.png" alt="Style Matrix Mockup" class="work-img" loading="lazy" />
-      </div>
-      <div class="work-item work-item--wide reveal-card">
-        <img src="https://i.ibb.co/Z68ph7DF/8d4cf1f-33d-224-e06-d12ce6bcce81-style-matrix-mockup-2.png" alt="Style Matrix Mockup 2" class="work-img" loading="lazy" />
-      </div>
-      <div class="work-item reveal-card">
-        <img src="https://i.ibb.co/67LrZRDp/f2150f-3bd0-708-5bfd-bcb137278fba-Brand-Guidelines-4.png" alt="Brand Guidelines" class="work-img" loading="lazy" />
-      </div>
-      <div class="work-item reveal-card">
-        <img src="https://i.ibb.co/Q7rnJLHJ/03da1e-232-0f8-8e76-138da2ee6b-please-without-changing-much-of-1.png" alt="Brand Design" class="work-img" loading="lazy" />
+
+      <div class="p-card pif fu">
+        <span class="p-badge">Best Value — Save 25%</span>
+        <h3 class="p-title">Paid in Full</h3>
+        <p class="p-desc">Three months, paid upfront. Lock in your spot and pocket the difference.</p>
+        <div class="p-price">$12,375</div>
+        <p class="p-sub">3 months · $16,500 value</p>
+        <p class="p-savings">↑ You save $4,125</p>
+        <a href="#" class="p-btn-pif">Claim This Rate →</a>
       </div>
     </div>
+
+    <p class="pricing-note fu">Only 2 spots exist. Payment locks your place. We'll connect before July 1 to align on priorities so we hit the ground running.</p>
   </section>
 
-  <!-- ===================== ABOUT ===================== -->
-  <section class="about" id="about">
-    <div class="about-inner container">
-
-      <div class="about-photo reveal-card">
-        <img src="https://i.ibb.co/1tQKD4q2/24be93e0-8a42-4bf6-9a9d-35bd7d4c117d.png" alt="Allie Fern" class="about-img" loading="lazy" />
-      </div>
-
-      <div class="about-content">
-        <p class="section-overline reveal-line">ABOUT ALLIE</p>
-        <h2 class="section-heading reveal-heading">
-          I&rsquo;m not here to make things look nice.<br />
-          <em>I&rsquo;m here to make things work.</em>
-        </h2>
-        <div class="about-body reveal-block">
-          <p>I&rsquo;ve been in design long enough to know that a pretty brand that doesn&rsquo;t convert isn&rsquo;t a brand. It&rsquo;s just decoration at that point.</p>
-          <p>I work with women who are already excellent&hellip; coaches, service providers, high-ticket sellers&hellip; who need a designer who can move at their speed, hold their vision, and build something that does the heavy lifting for them.</p>
-          <p>Think of me as your second brain. The person you drop a Tuesday morning voice note to with a half-formed idea and trust to turn it into something that sells. I bring the design, the strategy, the structure, and the eye&hellip; so you can stay in your genius and let the brand do its job.</p>
-        </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJH3ZyAEF1dMJfEVacwirwXIA8rOUPNBtRmI8cF2uXXy990w/viewform?usp=header" target="_blank" rel="noopener" class="btn-primary btn-magnetic reveal-block">I wanna hire you right tf now! &rarr;</a>
-      </div>
-
+  <!-- ═══ URGENCY BAND ═══ -->
+  <section class="urgency">
+    <div class="urgency-left fu">
+      <h3>I hold the vision<br>while you're on stage.</h3>
+      <p class="urgency-sub">While you're speaking, raising your kids, and closing six-figure deals — your brand is being built. Same day. Every day.</p>
     </div>
+    <a href="#pricing" class="btn-cream-on-red fu">Reserve Your Spot →</a>
   </section>
 
-  <!-- ===================== EMAIL CTA ===================== -->
-  <section class="email-cta" id="contact">
-    <div class="email-cta-inner container">
-      <span class="email-cta-script reveal-line">stay in the loop</span>
-      <h2 class="section-heading reveal-heading">The best brands aren&rsquo;t built by accident.</h2>
-      <p class="section-sub reveal-block">Join the list for design and strategy insights that actually move the needle, straight to your inbox.</p>
-
-      <form class="email-form reveal-block" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="newsletter" />
-        <p class="hidden-field" aria-hidden="true"><input name="bot-field" /></p>
-        <div class="email-form-fields">
-          <input type="text" name="first-name" placeholder="First name" required autocomplete="given-name" />
-          <input type="email" name="email" placeholder="Email address" required autocomplete="email" />
-          <button type="submit" class="btn-cream btn-magnetic">I&rsquo;m In &rarr;</button>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- ===================== INSTAGRAM ===================== -->
-  <section class="instagram-section" id="instagram">
-    <div class="container">
-      <div class="instagram-header">
-        <div>
-          <p class="section-overline reveal-line">FIND ME ON INSTAGRAM</p>
-          <h2 class="section-heading reveal-heading">Come hang with me.</h2>
-          <p class="section-sub reveal-block">Behind the work, the strategy, and the occasional Tuesday morning voice note. This is where I show up most.</p>
-          <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="btn-primary btn-magnetic reveal-block">Follow @iamalexandrafern &rarr;</a>
-        </div>
-        <div class="instagram-handle-badge reveal-block">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="32" height="32"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-          <span>@iamalexandrafern</span>
+  <!-- ═══ ABOUT ═══ -->
+  <section class="about">
+    <div class="about-photo-wrap fu">
+      <div class="about-photo">
+        <div class="ph light">
+          <svg width="60" height="60" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="8" width="56" height="48" rx="2" stroke="#040404" stroke-width="1.5"/>
+            <circle cx="22" cy="26" r="7" stroke="#040404" stroke-width="1.5"/>
+            <path d="M4 44L18 30L28 42L38 32L60 52" stroke="#040404" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span class="ph-label">Portrait Photo</span>
+          <span class="ph-dim">900 × 1125px</span>
         </div>
       </div>
     </div>
-    <div class="instagram-grid">
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
-      <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" class="instagram-tile reveal-card"><div class="photo-placeholder"><span class="placeholder-label">[ Photo ]</span></div></a>
+    <div>
+      <p class="eyebrow fu">About Allie</p>
+      <h2 class="fu">I'm not a designer you hire.<br>I'm the one you keep.</h2>
+      <p class="fu">I'm Allie — Creative Director, designer, copywriter, and strategist. I've spent years inside the businesses of high-ticket coaches and empire builders, and I've learned something they all eventually figure out: what they need isn't more deliverables. It's someone who holds it all so they don't have to.</p>
+      <p class="fu">Fern Industries takes two retained clients at a time. Daily access. Full creative stack. Same-day execution. No agency lag, no contractor management, no explaining your brand to someone new every quarter.</p>
+      <p class="fu">My clients say they feel relieved. Then they get excited about launching things again.</p>
+      <p class="fu">That's the whole thing, really.</p>
+      <a href="#pricing" class="btn-red-about fu">Work With Me →</a>
     </div>
   </section>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer">
-    <div class="footer-inner container">
-      <div class="footer-brand">
-        <span class="footer-logo-name">ALLIE FERN</span>
-        <span class="footer-logo-sub">Design &amp; Strategy for High-Ticket Women</span>
-      </div>
-
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="#hero">Home</a>
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="quiz-oracle.html">Quiz Oracle</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="footer-social">
-        <a href="https://instagram.com/iamalexandrafern" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a href="https://www.facebook.com/allie.billings.1/" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M15 2h-2a4 4 0 0 0-4 4v3H7v4h2v9h4v-9h3l1-4h-4V6a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="footer-bottom container">
-      <p>&copy; 2026 Allie Fern. All rights reserved.</p>
-    </div>
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <a href="#" class="footer-logo">
+      <img src="https://i.ibb.co/Q3Hm500L/Artboard-2.png" alt="Fern Industries">
+    </a>
+    <p class="footer-copy">© 2025 Fern Industries · alliefern.com</p>
   </footer>
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-  <script src="js/main.js"></script>
+  <script>
+    // Nav: transparent → black on scroll past 60px
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Fade-up with 80ms stagger within each parent container
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const siblings = Array.from(el.parentElement.querySelectorAll('.fu'));
+        const idx = siblings.indexOf(el);
+        setTimeout(() => el.classList.add('visible'), Math.max(0, idx * 80));
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+    document.querySelectorAll('.fu').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
