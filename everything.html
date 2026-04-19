@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everything — Allie Fern / Fern Industries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #040404;
+      color: #fcf8f5;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      min-height: 100vh;
+    }
+    a { text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { font-family: 'Instrument Serif', serif; font-weight: 400; }
+
+    /* ── Fade-up ── */
+    .fu { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fu.visible { opacity: 1; transform: translateY(0); }
+
+    /* ════════════════════════
+       HEADER
+    ════════════════════════ */
+    header {
+      padding: 40px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .header-logo {
+      height: 40px;
+      width: auto;
+      margin-bottom: 28px;
+    }
+    header h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      color: #fcf8f5;
+      margin-bottom: 14px;
+    }
+    header h1 em { font-style: italic; color: #ffc1b4; }
+    .header-sub {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(252,248,245,0.55);
+      max-width: 420px;
+      margin: 0 auto 48px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(252,248,245,0.07);
+      margin: 8px 0;
+    }
+
+    /* ════════════════════════
+       PAGE LAYOUT
+    ════════════════════════ */
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ════════════════════════
+       SECTION LABEL
+    ════════════════════════ */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 52px 0 20px;
+    }
+    .section-label .eyebrow { color: #9a8832; }
+    .section-label-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(154,136,50,0.2);
+    }
+
+    /* ════════════════════════
+       LINK CARDS
+    ════════════════════════ */
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 28px;
+      border: 1px solid rgba(252,248,245,0.09);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      border-color: rgba(154,136,50,0.5);
+      background: rgba(154,136,50,0.04);
+    }
+    .card::after {
+      content: '→';
+      position: absolute;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: rgba(252,248,245,0.25);
+      transition: color 0.3s ease, right 0.3s ease;
+    }
+    .card:hover::after {
+      color: #9a8832;
+      right: 22px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+    .card-icon.red   { background: rgba(118,0,0,0.25); }
+    .card-icon.gold  { background: rgba(154,136,50,0.18); }
+    .card-icon.cream { background: rgba(252,248,245,0.08); }
+
+    .card-text { flex: 1; min-width: 0; padding-right: 24px; }
+    .card-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9a8832;
+      margin-bottom: 4px;
+    }
+    .card-title {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #fcf8f5;
+      line-height: 1.25;
+      margin-bottom: 5px;
+    }
+    .card-desc {
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(252,248,245,0.45);
+    }
+
+    /* ── Featured card (homepage / retainer) ── */
+    .card.featured {
+      background: #0f0f0f;
+      border-color: rgba(252,248,245,0.12);
+      padding: 28px 32px;
+    }
+    .card.featured:hover {
+      border-color: rgba(154,136,50,0.6);
+      background: rgba(154,136,50,0.06);
+    }
+    .card.featured .card-title { font-size: 24px; }
+
+    /* ── Paid card accent ── */
+    .card.paid { border-left: 2px solid #760000; }
+    .card.paid:hover { border-left-color: #760000; }
+
+    /* ── Price tag ── */
+    .price-tag {
+      font-family: 'Instrument Serif', serif;
+      font-size: 22px;
+      color: rgba(252,248,245,0.35);
+      flex-shrink: 0;
+      padding-right: 36px;
+    }
+    .price-tag.highlight { color: #9a8832; }
+
+    /* ════════════════════════
+       TOOLS SECTION
+    ════════════════════════ */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .tool-card {
+      padding: 24px;
+      border: 1px solid rgba(252,248,245,0.09);
+      transition: border-color 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+    }
+    .tool-card:hover {
+      border-color: rgba(154,136,50,0.5);
+      background: rgba(154,136,50,0.04);
+    }
+    .tool-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(252,248,245,0.3);
+      margin-bottom: 10px;
+    }
+    .tool-name {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 22px;
+      color: #fcf8f5;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .tool-desc {
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(252,248,245,0.45);
+      margin-bottom: 16px;
+    }
+    .tool-link {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #9a8832;
+      transition: color 0.3s ease;
+    }
+    .tool-card:hover .tool-link { color: #fcf8f5; }
+
+    /* ════════════════════════
+       FOOTER
+    ════════════════════════ */
+    .page-footer {
+      text-align: center;
+      padding: 40px 0 60px;
+      border-top: 1px solid rgba(252,248,245,0.06);
+    }
+    .page-footer img {
+      height: 24px;
+      width: auto;
+      opacity: 0.35;
+      filter: invert(1);
+      margin: 0 auto 12px;
+    }
+    .page-footer p {
+      font-size: 11px;
+      color: rgba(252,248,245,0.25);
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 480px) {
+      .tools-grid { grid-template-columns: 1fr; }
+      .card { padding: 20px; }
+      .card.featured { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ═══ HEADER ═══ -->
+    <header>
+      <img class="header-logo fu" src="https://i.ibb.co/5WpCjzSD/Artboard-2-2.png" alt="Fern Industries">
+      <h1 class="fu">Everything<br>in one place.</h1>
+      <p class="header-sub fu">Tools, resources, and offers from Allie Fern — creative director, strategist, and the person behind Fern Industries.</p>
+    </header>
+
+    <div class="divider"></div>
+
+    <!-- ═══ WORK WITH ME ═══ -->
+    <div class="section-label fu">
+      <span class="eyebrow">Work With Me</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <a href="https://alliefern.com" class="card featured fu" target="_blank" rel="noopener">
+      <div class="card-icon cream">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(252,248,245,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="card-text">
+        <p class="card-label">Retainer — Starting July 2026</p>
+        <p class="card-title">Embedded Creative Direction</p>
+        <p class="card-desc">Daily access. Design, copy, tech & strategy — held by one person. Two clients max.</p>
+      </div>
+    </a>
+
+    <a href="https://square.link/u/0yUn1UC6" class="card paid fu" target="_blank" rel="noopener">
+      <div class="card-icon red">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,193,180,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+      <div class="card-text">
+        <p class="card-label">Done-For-You Service</p>
+        <p class="card-title">The Conversion Engine</p>
+        <p class="card-desc">I build your custom calculator + full conversion funnel — opt-in to CTA. Completely done for you.</p>
+      </div>
+      <span class="price-tag highlight">→</span>
+    </a>
+
+    <!-- ═══ FREE TOOLS ═══ -->
+    <div class="section-label fu">
+      <span class="eyebrow">Free Tools</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <a href="https://thejiffyquick.systeme.io/cashflow-clarity-calculator-optin" class="card fu" target="_blank" rel="noopener">
+      <div class="card-icon gold">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(154,136,50,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </div>
+      <div class="card-text">
+        <p class="card-label">Free Calculator</p>
+        <p class="card-title">Cashflow Clarity Calculator</p>
+        <p class="card-desc">Find out where your revenue is leaking — and what fixing it is actually worth.</p>
+      </div>
+    </a>
+
+    <!-- ═══ RESOURCES ═══ -->
+    <div class="section-label fu">
+      <span class="eyebrow">Resources</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <a href="https://thejiffyquick.systeme.io/2440723e" class="card paid fu" target="_blank" rel="noopener">
+      <div class="card-icon gold">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(154,136,50,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+        </svg>
+      </div>
+      <div class="card-text">
+        <p class="card-label">Guide — $10</p>
+        <p class="card-title">Build a Calculator with Claude</p>
+        <p class="card-desc">Step-by-step: how to create a custom lead-gen calculator for your business using Claude AI.</p>
+      </div>
+      <span class="price-tag">$10</span>
+    </a>
+
+    <!-- ═══ RECOMMENDED TOOLS ═══ -->
+    <div class="section-label fu">
+      <span class="eyebrow">Tools I Actually Use</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <div class="tools-grid">
+      <a href="https://systeme.io/?sa=sa011602748576cb6d1300237feafbe8882c3b0884" class="tool-card fu" target="_blank" rel="noopener">
+        <p class="tool-label">Funnels & Automation</p>
+        <p class="tool-name">Systeme.io</p>
+        <p class="tool-desc">All-in-one platform for funnels, email, courses, and automations. What I use and build on.</p>
+        <span class="tool-link">Try it free →</span>
+      </a>
+      <a href="https://pressmasterai.cello.so/EHAwbVoMeGL" class="tool-card fu" target="_blank" rel="noopener">
+        <p class="tool-label">PR & Content</p>
+        <p class="tool-name">Pressmaster.ai</p>
+        <p class="tool-desc">AI-powered PR content that actually sounds human. Great for thought leadership without the agency price tag.</p>
+        <span class="tool-link">Check it out →</span>
+      </a>
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <div class="page-footer fu">
+      <img src="https://i.ibb.co/5WpCjzSD/Artboard-2-2.png" alt="Fern Industries">
+      <p>© 2025 Fern Industries · alliefern.com</p>
+    </div>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const siblings = Array.from(el.parentElement.querySelectorAll('.fu'));
+        const idx = siblings.indexOf(el);
+        setTimeout(() => el.classList.add('visible'), Math.max(0, idx * 70));
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+    document.querySelectorAll('.fu').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
