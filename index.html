@@ -66,6 +66,24 @@
       width: auto;
     }
 
+    .nav-calc {
+      display: inline-block;
+      color: rgba(252,248,245,0.65);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+    .nav-calc:hover { color: #9a8832; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
     .nav-cta {
       display: inline-block;
       border: 1px solid #fcf8f5;
@@ -247,6 +265,22 @@
       transition: background 0.3s ease, color 0.3s ease;
     }
     .btn-red:hover { background: #fcf8f5; color: #040404; }
+
+    .btn-cream-on-dark {
+      display: inline-block;
+      background: #fcf8f5;
+      color: #040404;
+      padding: 15px 36px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .btn-cream-on-dark:hover { background: #9a8832; color: #fcf8f5; }
 
     .btn-cream-on-red {
       display: inline-block;
@@ -678,6 +712,54 @@
     .btn-red-about:hover { background: #fcf8f5; color: #040404; }
 
     /* ════════════════════════════════
+       CALCULATOR BAND
+    ════════════════════════════════ */
+    .calc-band {
+      background: #040404;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 0;
+      border-top: 1px solid rgba(252,248,245,0.06);
+    }
+    .calc-content {
+      padding: 100px 80px;
+    }
+    .calc-content .eyebrow { color: #9a8832; margin-bottom: 22px; }
+    .calc-content h2 {
+      font-size: clamp(32px, 3.5vw, 48px);
+      color: #fcf8f5;
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+    .calc-content p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(252,248,245,0.65);
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+    .calc-image {
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 480px;
+      background: #0b0b0b;
+    }
+    .calc-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 480px;
+    }
+    @media (max-width: 768px) {
+      .calc-band { grid-template-columns: 1fr; }
+      .calc-content { padding: 64px 28px; }
+      .calc-image { display: none; }
+    }
+
+    /* ════════════════════════════════
        FOOTER
     ════════════════════════════════ */
     footer {
@@ -739,7 +821,10 @@
     <a href="#" class="nav-logo">
       <img src="https://i.ibb.co/5WpCjzSD/Artboard-2-2.png" alt="Fern Industries">
     </a>
-    <a href="#pricing" class="nav-cta">Reserve Your Spot →</a>
+    <div class="nav-right">
+      <a href="https://thejiffyquick.systeme.io/cashflow-clarity-calculator-optin" class="nav-calc" target="_blank" rel="noopener">Revenue Calculator</a>
+      <a href="#pricing" class="nav-cta">Reserve Your Spot →</a>
+    </div>
   </nav>
 
   <!-- ═══ MARQUEE BAR ═══ -->
@@ -919,6 +1004,19 @@
       <p class="fu">My clients say they feel relieved. Then they get excited about launching things again.</p>
       <p class="fu">That's the whole thing, really.</p>
       <a href="#pricing" class="btn-red-about fu">Work With Me →</a>
+    </div>
+  </section>
+
+  <!-- ═══ REVENUE CALCULATOR ═══ -->
+  <section class="calc-band">
+    <div class="calc-content">
+      <p class="eyebrow fu">Free Tool</p>
+      <h2 class="fu">Find out what your brand is actually worth.</h2>
+      <p class="fu">Use the Cashflow Clarity Calculator to see exactly where your revenue is leaking — and what fixing it could mean for your bottom line.</p>
+      <a href="https://thejiffyquick.systeme.io/cashflow-clarity-calculator-optin" class="btn-cream-on-dark fu" target="_blank" rel="noopener">Open the Calculator →</a>
+    </div>
+    <div class="calc-image fu">
+      <img src="https://d1yei2z3i6k35z.cloudfront.net/5358788/69e3fcafc4db50.62255103_CopyofSysteme.ioTRIPWIRESALESFUNNELTEMPLATEMockups5.png" alt="Cashflow Clarity Calculator">
     </div>
   </section>
 
